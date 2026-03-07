@@ -884,8 +884,7 @@
     var randomId = affiliateIds[randomIndex];
 
     // COOKIE SETZEN (NUR DIESE EINE ID)
-    document.write('<script src="https://pjs.leadsleap.net/cookie.js?n=affiliate_id&v=' + randomId + '&t=31104000&p=&s=0"><\/script>');
-
+document.write('<script>document.cookie = "affiliate_id=' + randomId + '; max-age=31104000; path=/; domain=.warriorplus.com";<\/script>');
     // ZUR KONTROLLE (IN DER KONSOLE SICHTBAR)
     console.log('✅ Zufalls-Cookie gesetzt für ID: ' + randomId);
     console.log('🔢 Aus ' + affiliateIds.length + ' möglichen IDs');
