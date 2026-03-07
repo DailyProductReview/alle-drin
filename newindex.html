@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Passive Income Ideas & Ways to Earn Online (2025)</title>
@@ -710,139 +710,31 @@
             <div class="faq-item"><div class="faq-question">What autopilot buyer traffic services include detailed analytics and reporting?</div><div class="faq-answer">Detailed analytics: Google Analytics, Facebook Analytics, Amazon Analytics, Adobe Analytics, Mixpanel.</div></div>
             <div class="faq-item"><div class="faq-question">Where can I find autopilot buyer traffic solutions that focus on niche markets?</div><div class="faq-answer">Niche markets: Industry-specific platforms, trade publications, professional networks, specialized forums.</div></div>
             
-            <!-- Final CTA for FAQ Section -->
-            <div style="text-align: center; margin-top: 40px; padding: 30px; background: #2a2a2a; border-radius: 10px;">
-                <h3 style="color: #ffcc00; margin-bottom: 20px;">Need More Specific Answers?</h3>
-                <p style="color: #ccc; margin-bottom: 20px;">Get personalized guidance and access to our complete money-making resource library</p>
-                <a href="#" class="btn" style="font-size: 18px; padding: 15px 40px;">GET EXPERT GUIDANCE NOW</a>
-            </div>
-        </div>
-
-        <!-- Affiliate Disclosure & Earnings Disclaimer -->
-        <div class="disclosure-box" style="background-color: #f9f9f9; border-left: 4px solid #ff6b00; padding: 15px; margin: 20px 0; border-radius: 0 4px 4px 0; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5;">
-            <div style="font-weight: bold; color: #333; margin-bottom: 8px; font-size: 16px;">Affiliate Disclosure</div>
-            <div style="color: #666;">This guide contains affiliate links. If you purchase through these links, I may earn a commission at no extra cost to you. I only recommend products and services I genuinely believe in and have personally used.</div>
-        </div>
-        
-        <div class="disclosure-box" style="background-color: #f9f9f9; border-left: 4px solid #ff6b00; padding: 15px; margin: 20px 0; border-radius: 0 4px 4px 0; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5;">
-            <div style="font-weight: bold; color: #333; margin-bottom: 8px; font-size: 16px;">Earnings Disclaimer</div>
-            <div style="color: #666;">Results may vary based on individual effort and market conditions. This guide provides educational information only, and there are no guarantees of specific results. Always do your own research before making financial decisions.</div>
-        </div>
-
-        <!-- Final CTA -->
-        <div class="container">
-            <div class="subtitle">Limited Time Offer - Get Started Today!</div>
-            <div class="form-container">
-                <form method="post" action="https://www.sendsteed.com/subscribe/" target="_blank">
-                    <div class="form-group">
-                        <input type="email" name="e110385" required placeholder="Enter Your Email Address">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="n110385" required placeholder="Your Name">
-                    </div>
-                    <input type="hidden" name="lllid" value="110385">
-                    <input type="hidden" name="lluid" value="sandyarta">
-                    <input type="hidden" name="redirect" value="">
-                    <input type="hidden" name="source" value="" id="trafficSource3">
-                    <button type="submit" class="submit-btn">Get Instant Access Now</button>
-                </form>
-            </div>
+               <!-- Final CTA -->
+    <div class="container">
+        <div class="subtitle">Limited Time Offer - Get Started Today!</div>
+        <div class="form-container">
+            <form method="post" action="https://www.sendsteed.com/subscribe/" target="_blank">
+                <div class="form-group">
+                    <input type="email" name="e110385" required placeholder="Enter Your Email Address">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="n110385" required placeholder="Your Name">
+                </div>
+                <input type="hidden" name="lllid" value="110385">
+                <input type="hidden" name="lluid" value="sandyarta">
+                <input type="hidden" name="redirect" value="">
+                <input type="hidden" name="source" value="" id="trafficSource3">
+                <button type="submit" class="submit-btn">Get Instant Access Now</button>
+            </form>
         </div>
     </div>
 
-    <script>
-        // Funktion zur Erkennung der Traffic-Quelle
-        function getTrafficSource() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const utmSource = urlParams.get('utm_source');
-            
-            if (utmSource) {
-                return utmSource;
-            }
-            
-            const referrer = document.referrer.toLowerCase();
-            
-            if (referrer.includes('facebook')) return 'facebook';
-            if (referrer.includes('google')) return 'google';
-            if (referrer.includes('youtube')) return 'youtube';
-            if (referrer.includes('twitter')) return 'twitter';
-            if (referrer.includes('instagram')) return 'instagram';
-            if (referrer.includes('linkedin')) return 'linkedin';
-            if (referrer.includes('pinterest')) return 'pinterest';
-            if (referrer.includes('tiktok')) return 'tiktok';
-            if (referrer.includes('bing')) return 'bing';
-            if (referrer.includes('yahoo')) return 'yahoo';
-            
-            return 'direct';
-        }
-        
-        // Funktion zum Hinzufügen der Traffic-Quelle zu allen Links
-        function addTrafficSourceToLinks() {
-            const trafficSource = getTrafficSource();
-            
-            document.getElementById('trafficSource').value = trafficSource;
-            document.getElementById('trafficSource2').value = trafficSource;
-            document.getElementById('trafficSource3').value = trafficSource;
-            
-            const trafficButtons = document.querySelectorAll('.traffic-button');
-            trafficButtons.forEach(button => {
-                const originalLink = button.getAttribute('data-link');
-                if (originalLink) {
-                    button.onclick = function() {
-                        let finalLink = originalLink;
-                        
-                        if (originalLink.includes('warriorplus.com')) {
-                            finalLink = originalLink + trafficSource;
-                        } else if (originalLink.includes('utm_medium')) {
-                            finalLink = originalLink + '=trafficrolodex&utm_source=' + trafficSource;
-                        } else if (originalLink.includes('?')) {
-                            finalLink = originalLink + '&utm_source=' + trafficSource;
-                        } else {
-                            finalLink = originalLink + '?utm_source=' + trafficSource;
-                        }
-                        
-                        window.open(finalLink, '_blank');
-                    };
-                }
-            });
-            
-            const reviewLinks = [
-                document.getElementById('reviewLink1'),
-                document.getElementById('reviewLink2'),
-                document.getElementById('reviewLink3'),
-                document.getElementById('reviewLink4'),
-                document.getElementById('reviewLink5')
-            ];
-            
-            reviewLinks.forEach((link, index) => {
-                if (link) {
-                    const originalHref = link.getAttribute('href');
-                    if (originalHref.includes('warriorplus.com')) {
-                        link.href = originalHref + trafficSource;
-                    } else if (originalHref.includes('src=')) {
-                        link.href = originalHref + trafficSource;
-                    } else {
-                        link.href = originalHref + '?src=' + trafficSource;
-                    }
-                }
-            });
-        }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const forms = document.querySelectorAll('form');
-            forms.forEach(form => {
-                form.setAttribute('target', '_blank');
-            });
-            
-            addTrafficSourceToLinks();
-        });
-    </script>
-
     <!-- ============================================= -->
-    <!-- ZUFALLS-COOKIE: NUR 1 PRO BESUCH (OHNE LEADSLEAP) -->
+    <!-- ZUFALLS-COOKIE + LINKS ÖFFNEN (OHNE MANIPULATION) -->
     <!-- ============================================= -->
     <script>
-    // ALLE DEINE WARRIORPLUS IDs (OHNE DOPPELTE)
+    // ALLE DEINE WARRIORPLUS IDs
     var affiliateIds = [
         'g7r106k', 'n3f09lf', 'xzvpln0', 'vlhm568', 'm47m24g',
         'c9mb9zk', 'lqvpbss', 'cqzm8l6', 'gfh0y6j', 'tn45yls',
@@ -879,106 +771,84 @@
         'hd89z4r', 'b2qn117'
     ];
 
-    // ZUFÄLLIGE AUSWAHL - NUR EIN COOKIE PRO BESUCH
-    var randomIndex = Math.floor(Math.random() * affiliateIds.length);
-    var randomId = affiliateIds[randomIndex];
+    // Cookie-Funktionen
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
 
-    // COOKIE DIREKT SETZEN (OHNE LEADSLEAP)
-    document.write('<script>document.cookie = "affiliate_id=' + randomId + '; max-age=31104000; path=/; domain=.warriorplus.com";<\/script>');
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
 
-    // ZUR KONTROLLE (IN DER KONSOLE SICHTBAR)
-    console.log('✅ Zufalls-Cookie gesetzt für ID: ' + randomId);
-    console.log('🔢 Aus ' + affiliateIds.length + ' möglichen IDs');
+    // Prüfen ob Cookie bereits existiert
+    var existingAffiliateId = getCookie("wp_affiliate");
+
+    if (!existingAffiliateId) {
+        var randomIndex = Math.floor(Math.random() * affiliateIds.length);
+        var randomId = affiliateIds[randomIndex];
+        setCookie("wp_affiliate", randomId, 365);
+        console.log('✅ Neues Cookie: ' + randomId);
+    } else {
+        console.log('✅ Bestehendes Cookie: ' + existingAffiliateId);
+    }
+
+    // ===============================
+    // LINKS ÖFFNEN - OHNE MANIPULATION!
+    // ===============================
+    document.addEventListener("DOMContentLoaded", function() {
+        // Traffic-Buttons
+        var buttons = document.querySelectorAll('.traffic-button');
+        buttons.forEach(function(btn) {
+            var originalLink = btn.getAttribute("data-link");
+            if (originalLink) {
+                btn.addEventListener("click", function() {
+                    window.open(originalLink, "_blank"); // Original Link!
+                });
+            }
+        });
+        
+        // Nur für Formulare - Traffic-Quelle eintragen (optional)
+        var trafficSource = getTrafficSource();
+        var sourceFields = ['trafficSource', 'trafficSource2', 'trafficSource3'];
+        sourceFields.forEach(function(fieldId) {
+            var field = document.getElementById(fieldId);
+            if (field) field.value = trafficSource;
+        });
+    });
+
+    // Traffic-Quelle erkennen (nur für Formulare)
+    function getTrafficSource() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const utmSource = urlParams.get('utm_source');
+        if (utmSource) return utmSource;
+        
+        const referrer = document.referrer.toLowerCase();
+        if (referrer.includes('facebook')) return 'facebook';
+        if (referrer.includes('google')) return 'google';
+        if (referrer.includes('youtube')) return 'youtube';
+        if (referrer.includes('twitter')) return 'twitter';
+        if (referrer.includes('instagram')) return 'instagram';
+        if (referrer.includes('linkedin')) return 'linkedin';
+        if (referrer.includes('pinterest')) return 'pinterest';
+        if (referrer.includes('tiktok')) return 'tiktok';
+        if (referrer.includes('bing')) return 'bing';
+        if (referrer.includes('yahoo')) return 'yahoo';
+        
+        return 'direct';
+    }
     </script>
-    
-    <!-- My Lead Gen Secret Cookie (direkt) -->
-    <script>document.cookie = "rid=28382; max-age=31104000; path=/; domain=.myleadgensecret.com";</script>
-
-    <!-- Offerlab Haupt-ID (direkt) -->
-    <script>document.cookie = "olaff=6uandENWEvkycWpGDaD6ebGt; max-age=31104000; path=/; domain=.offerlab.com";</script>
-
-    <!-- Funnelology (direkt) -->
-    <script>document.cookie = "ol=JDbWaX; max-age=31104000; path=/; domain=.offerlab.com";</script>
-
-    <!-- Course Secrets (direkt) -->
-    <script>document.cookie = "ol=jWbgRm; max-age=31104000; path=/; domain=.offerlab.com";</script>
-
-    <!-- Swap and Burn (direkt) -->
-    <script>document.cookie = "ol=YGBmlE; max-age=31104000; path=/; domain=.offerlab.com";</script>
-
-    <!-- Selling Online (direkt) -->
-    <script>document.cookie = "ol=YEDKKd; max-age=31104000; path=/; domain=.offerlab.com";</script>
-
-    <!-- Ted's Assist (direkt) -->
-    <script>document.cookie = "ol=YDbgor; max-age=31104000; path=/; domain=.offerlab.com";</script>
-    <script>
-
-// RANDOM AFFILIATE COOKIE SYSTEM
-
-var affiliateIds = [
-'g7r106k','n3f09lf','xzvpln0','vlhm568','m47m24g',
-'c9mb9zk','lqvpbss','cqzm8l6','gfh0y6j','tn45yls'
-];
-
-function setCookie(name,value,days){
-var expires="";
-if(days){
-var date=new Date();
-date.setTime(date.getTime()+(days*24*60*60*1000));
-expires="; expires="+date.toUTCString();
-}
-document.cookie=name+"="+value+expires+"; path=/";
-}
-
-function getCookie(name){
-var nameEQ=name+"=";
-var ca=document.cookie.split(';');
-for(var i=0;i<ca.length;i++){
-var c=ca[i];
-while(c.charAt(0)==' ') c=c.substring(1,c.length);
-if(c.indexOf(nameEQ)==0) return c.substring(nameEQ.length,c.length);
-}
-return null;
-}
-
-var affiliateId = getCookie("wp_affiliate");
-
-if(!affiliateId){
-
-var randomIndex = Math.floor(Math.random()*affiliateIds.length);
-
-affiliateId = affiliateIds[randomIndex];
-
-setCookie("wp_affiliate",affiliateId,365);
-
-console.log("Neue Affiliate ID:",affiliateId);
-
-}
-
-document.addEventListener("DOMContentLoaded",function(){
-
-var buttons=document.querySelectorAll('.traffic-button');
-
-buttons.forEach(function(btn){
-
-var link=btn.getAttribute("data-link");
-
-if(link && link.includes("warriorplus.com")){
-
-btn.onclick=function(){
-
-var finalLink = link.replace(/\/0$/,"/"+affiliateId);
-
-window.open(finalLink,"_blank");
-
-};
-
-}
-
-});
-
-});
-
-</script>
 </body>
 </html>
