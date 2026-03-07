@@ -836,72 +836,57 @@
             
             addTrafficSourceToLinks();
         });
-    </script>
-
-    <!-- ============================================= -->
-    <!-- ZUFALLS-COOKIE: NUR 1 PRO BESUCH (SICHER)   -->
-    <!-- ============================================= -->
-    <script>
-    // ALLE DEINE WARRIORPLUS IDs
+       <script>
+    // ===============================
+    // RANDOM AFFILIATE COOKIE SYSTEM
+    // ===============================
     var affiliateIds = [
         'g7r106k', 'n3f09lf', 'xzvpln0', 'vlhm568', 'm47m24g',
-        'c9mb9zk', 'lqvpbss', 'cqzm8l6', 'gfh0y6j', 'tn45yls',
-        'f9p0mx9', 'bbz45b', 'xqtgxrv', 'p7wkf88', 'bp404mh',
-        'mqhhpqy', 'v2qv3n', 'lklslty', 'x9jvz9', 'qrdzhpr',
-        'zpt79r', 'ptn4bwl', 'l56dq4', 'hp9sh34', 'g05k1pk',
-        'pl6k290', 'htx7gsy', 'p3m7m3x', 'vj5n5z2', 'gy35qtl',
-        'y4lsd01', 'hpsc4xq', 'ylj7z65', 'k19vt3', 'tktdkf9',
-        'b6j3jr', 'xddpzzf', 'djg0n8k', 'qggx9k5', 't0p24c9',
-        'c6lbftb', 'tbjng1y', 'cz3lvz5', 'tbxhf6d', 'dhhy9d2',
-        'kcl9byp', 'kp3pqd7', 'dk237td', 'f3zk84w', 'qnsv9gq',
-        'w7vv38x', 'x8b4t72', 'ddy5nn6', 'vmm065s', 'b1rdhqt',
-        'hkfych2', 'c59vlp2', 'dvxckz7', 'vm6y391', 'z3cvc89',
-        'dzf9zdq', 'll977vz', 'ht8hcvn', 'r7rcbjy', 'sk2g2g8',
-        'yxtgksx', 'k2cfnsy', 'mc0qk6w', 'dvvyv2v', 'tysg5sd',
-        'pwzfsvr', 'xytk3sl', 't09l057', 'mjqlbh1', 'gqkgsfj',
-        'y5c671k', 'dyfdjc7', 'q0tbvhr', 'k0lgll8', 'f08jh2s',
-        'sp6ch5s', 'z9r4gmd', 'fcndwlw', 'j7kvm4s', 'g75yzzq',
-        'xlb9rn1', 'sv9xxmw', 'ws10624', 'xkq0vm4', 'rbj438k',
-        'sl96lfc', 'lxw3hg8', 'lhtr7y3', 'k9hz8vm', 'h4c2gfm',
-        'slpp5xd', 't21j7pp', 'vt35yk1', 'tt3bzb5', 'qv9qsth',
-        'msv5n64', 'q4f7phv', 'pm5nk3g', 'r8gpvts', 'hx5zygg',
-        'ghn6j9y', 'b9t5h5x', 'mzk7bwj', 'df23zr8', 'jtnch6m',
-        'n1bmb1k', 'qwffg04', 'pn9030s', 'lf9p04m', 'qdtcydr',
-        'y0jhtbt', 'cgwx7b0', 'gfkg50y', 'jxwxp06', 'nncnfb6',
-        'sp8p4yx', 'r3ynjrq', 'vgk39f7', 'smj8418', 'wfgg0qy',
-        'bm5vr3x', 'xm6wg1d', 'mwwxyql', 'z5s42jk', 'mvvqmmf',
-        'nv17rw1', 'vw9rtqq', 'sxxb4mh', 'h0s0y6r', 'jwwbym3',
-        'grfzcgq', 'qyx61rx', 'ml8tl4g', 'sby8cp4', 'b53hyxp',
-        'jz14vch', 'b24klq0', 'g530l6x', 's3h0djt', 'm8s0gx3',
-        'b30zsh', 'gkjrtxj', 'yp1xcnx', 'bjgqjn7', 'jk945s',
-        'ry09h9q', 'spkjwg', 'dk55f0r', 'grd563', 'yxf1kwg',
-        'rtxsgs5', 'qgxy75c', 'qdhhd35', 'cb7q9w4', 'dzyqxqs',
-        'hd89z4r', 'b2qn117'
+        'c9mb9zk', 'lqvpbss', 'cqzm8l6', 'gfh0y6j', 'tn45yls'
     ];
 
-    // Prüfen ob Cookie bereits existiert
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
     function getCookie(name) {
-        var value = "; " + document.cookie;
-        var parts = value.split("; " + name + "=");
-        if (parts.length == 2) return parts.pop().split(";").shift();
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
     }
 
     var existingAffiliateId = getCookie("wp_affiliate");
 
     if (!existingAffiliateId) {
-        // ZUFÄLLIGE AUSWAHL
         var randomIndex = Math.floor(Math.random() * affiliateIds.length);
         var randomId = affiliateIds[randomIndex];
-        
-        // COOKIE SETZEN (1 Jahr Gültigkeit)
-        var expiryDate = new Date();
-        expiryDate.setFullYear(expiryDate.getFullYear() + 1);
-        document.cookie = "wp_affiliate=" + randomId + "; expires=" + expiryDate.toUTCString() + "; path=/; domain=." + window.location.hostname;
-        
-        console.log('✅ Neues Zufalls-Cookie gesetzt für ID: ' + randomId);
+        setCookie("wp_affiliate", randomId, 365);
+        console.log('✅ Neues Cookie: ' + randomId);
     } else {
-        console.log('✅ Bestehendes Cookie gefunden für ID: ' + existingAffiliateId);
+        console.log('✅ Bestehendes Cookie: ' + existingAffiliateId);
     }
+
+    // LINKS ÖFFNEN - OHNE ÄNDERUNGEN!
+    document.addEventListener("DOMContentLoaded", function() {
+        var buttons = document.querySelectorAll('.traffic-button');
+        buttons.forEach(function(btn) {
+            var originalLink = btn.getAttribute("data-link");
+            if (originalLink) {
+                btn.addEventListener("click", function() {
+                    window.open(originalLink, "_blank");
+                });
+            }
+        });
+    });
     </script>
-</body>
-</html>
