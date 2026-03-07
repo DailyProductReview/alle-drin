@@ -911,5 +911,74 @@
 
     <!-- Ted's Assist (direkt) -->
     <script>document.cookie = "ol=YDbgor; max-age=31104000; path=/; domain=.offerlab.com";</script>
+    <script>
+
+// RANDOM AFFILIATE COOKIE SYSTEM
+
+var affiliateIds = [
+'g7r106k','n3f09lf','xzvpln0','vlhm568','m47m24g',
+'c9mb9zk','lqvpbss','cqzm8l6','gfh0y6j','tn45yls'
+];
+
+function setCookie(name,value,days){
+var expires="";
+if(days){
+var date=new Date();
+date.setTime(date.getTime()+(days*24*60*60*1000));
+expires="; expires="+date.toUTCString();
+}
+document.cookie=name+"="+value+expires+"; path=/";
+}
+
+function getCookie(name){
+var nameEQ=name+"=";
+var ca=document.cookie.split(';');
+for(var i=0;i<ca.length;i++){
+var c=ca[i];
+while(c.charAt(0)==' ') c=c.substring(1,c.length);
+if(c.indexOf(nameEQ)==0) return c.substring(nameEQ.length,c.length);
+}
+return null;
+}
+
+var affiliateId = getCookie("wp_affiliate");
+
+if(!affiliateId){
+
+var randomIndex = Math.floor(Math.random()*affiliateIds.length);
+
+affiliateId = affiliateIds[randomIndex];
+
+setCookie("wp_affiliate",affiliateId,365);
+
+console.log("Neue Affiliate ID:",affiliateId);
+
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+
+var buttons=document.querySelectorAll('.traffic-button');
+
+buttons.forEach(function(btn){
+
+var link=btn.getAttribute("data-link");
+
+if(link && link.includes("warriorplus.com")){
+
+btn.onclick=function(){
+
+var finalLink = link.replace(/\/0$/,"/"+affiliateId);
+
+window.open(finalLink,"_blank");
+
+};
+
+}
+
+});
+
+});
+
+</script>
 </body>
 </html>
