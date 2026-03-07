@@ -842,7 +842,7 @@
     <!-- ZUFALLS-COOKIE: NUR 1 PRO BESUCH (SICHER)   -->
     <!-- ============================================= -->
     <script>
-    // ALLE DEINE WARRIORPLUS IDs (OHNE DOPPELTE)
+    // ALLE DEINE WARRIORPLUS IDs
     var affiliateIds = [
         'g7r106k', 'n3f09lf', 'xzvpln0', 'vlhm568', 'm47m24g',
         'c9mb9zk', 'lqvpbss', 'cqzm8l6', 'gfh0y6j', 'tn45yls',
@@ -879,15 +879,29 @@
         'hd89z4r', 'b2qn117'
     ];
 
-    // ZUFÄLLIGE AUSWAHL - NUR EIN COOKIE PRO BESUCH
-    var randomIndex = Math.floor(Math.random() * affiliateIds.length);
-    var randomId = affiliateIds[randomIndex];
+    // Prüfen ob Cookie bereits existiert
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
 
-    // COOKIE SETZEN (NUR DIESE EINE ID)
-document.write('<script>document.cookie = "affiliate_id=' + randomId + '; max-age=31104000; path=/; domain=.warriorplus.com";<\/script>');
-    // ZUR KONTROLLE (IN DER KONSOLE SICHTBAR)
-    console.log('✅ Zufalls-Cookie gesetzt für ID: ' + randomId);
-    console.log('🔢 Aus ' + affiliateIds.length + ' möglichen IDs');
+    var existingAffiliateId = getCookie("wp_affiliate");
+
+    if (!existingAffiliateId) {
+        // ZUFÄLLIGE AUSWAHL
+        var randomIndex = Math.floor(Math.random() * affiliateIds.length);
+        var randomId = affiliateIds[randomIndex];
+        
+        // COOKIE SETZEN (1 Jahr Gültigkeit)
+        var expiryDate = new Date();
+        expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+        document.cookie = "wp_affiliate=" + randomId + "; expires=" + expiryDate.toUTCString() + "; path=/; domain=." + window.location.hostname;
+        
+        console.log('✅ Neues Zufalls-Cookie gesetzt für ID: ' + randomId);
+    } else {
+        console.log('✅ Bestehendes Cookie gefunden für ID: ' + existingAffiliateId);
+    }
     </script>
 </body>
-</html> 
+</html>
