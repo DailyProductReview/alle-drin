@@ -1,3 +1,4 @@
+
 <!DOCTYPE html> 
 <html lang="de">
 <head>
@@ -20,6 +21,26 @@
             font-synthesis: none;
             text-rendering: optimizeLegibility;
             padding: 1.5rem;
+            position: relative;
+        }
+
+        /* Hypnotic ambient overlay animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.02) 100%);
+            animation: hypnoticPulse 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes hypnoticPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.02); }
         }
 
         .conversion-fortress {
@@ -29,6 +50,15 @@
             padding: 2.2rem 2rem 2.5rem 2rem;
             box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.05);
             transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(0px);
+            animation: gentleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
         }
 
         .headline {
@@ -37,6 +67,7 @@
             letter-spacing: -0.02em;
             margin-bottom: 1.2rem;
             font-weight: 800;
+            position: relative;
         }
 
         .subheadline {
@@ -90,6 +121,28 @@
             background: var(--btn-bg);
             color: var(--btn-text);
             box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(115deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 90%);
+            transform: rotate(25deg);
+            animation: buttonShine 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes buttonShine {
+            0% { transform: translateX(-100%) rotate(25deg); opacity: 0; }
+            20% { opacity: 0.5; }
+            60% { opacity: 0.5; }
+            100% { transform: translateX(100%) rotate(25deg); opacity: 0; }
         }
 
         .cta-button:hover {
@@ -110,6 +163,12 @@
             font-weight: 500;
             line-height: 1.4;
             margin-top: 0.5rem;
+            animation: successGlow 0.6s ease-out;
+        }
+
+        @keyframes successGlow {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         .trust-micro {
@@ -128,6 +187,47 @@
             display: none;
         }
 
+        /* Audio control button - subtle hypnotic indicator */
+        .audio-hypno-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,215,0,0.5);
+            color: gold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            font-family: monospace;
+            box-shadow: 0 0 15px rgba(255,215,0,0.3);
+        }
+
+        .audio-hypno-btn:hover {
+            transform: scale(1.1);
+            background: rgba(0,0,0,0.7);
+            box-shadow: 0 0 25px rgba(255,215,0,0.6);
+        }
+
+        .audio-hypno-btn.playing {
+            animation: pulseRing 1.5s infinite;
+            border-color: #ffd966;
+            box-shadow: 0 0 20px rgba(255,215,0,0.8);
+        }
+
+        @keyframes pulseRing {
+            0% { box-shadow: 0 0 0 0 rgba(255,215,0,0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(255,215,0,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,215,0,0); }
+        }
+
         @media (max-width: 550px) {
             .conversion-fortress {
                 padding: 1.8rem 1.5rem 2rem 1.5rem;
@@ -138,12 +238,20 @@
             .subheadline {
                 font-size: 1rem;
             }
+            .audio-hypno-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="conversion-fortress" id="appRoot"></div>
+<div class="audio-hypno-btn" id="hypnoAudioBtn" title="Hypnotic Focus Frequency">🌀</div>
 
 <script>
     // ============================================
@@ -374,6 +482,148 @@
     
     let currentFramework = null;
     
+    // ============================================
+    // HYPNOTIC AUDIO - BINAURAL STYLE FREQUENCY
+    // 5.5 Hz Theta waves for deep receptivity + 111 Hz carrier
+    // Auto-plays on user interaction (browser policy compliant)
+    // ============================================
+    let audioCtx = null;
+    let leftOsc = null;
+    let rightOsc = null;
+    let masterGain = null;
+    let isAudioPlaying = false;
+    let audioInitialized = false;
+    
+    function initHypnoticAudio() {
+        if (audioCtx) return;
+        
+        try {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Carrier frequency: 111 Hz (golden ratio related, calming)
+            // Beat frequency: 5.5 Hz (Theta range - deep relaxation, suggestibility, dopamine release)
+            const baseFreq = 111.0;
+            const beatHz = 5.5;
+            
+            const leftFreq = baseFreq - (beatHz / 2); // 108.25 Hz
+            const rightFreq = baseFreq + (beatHz / 2); // 113.75 Hz
+            
+            leftOsc = audioCtx.createOscillator();
+            rightOsc = audioCtx.createOscillator();
+            
+            leftOsc.type = 'sine';
+            rightOsc.type = 'sine';
+            
+            leftOsc.frequency.value = leftFreq;
+            rightOsc.frequency.value = rightFreq;
+            
+            const leftPanner = audioCtx.createStereoPanner();
+            const rightPanner = audioCtx.createStereoPanner();
+            leftPanner.pan.value = -0.85;
+            rightPanner.pan.value = 0.85;
+            
+            masterGain = audioCtx.createGain();
+            masterGain.gain.value = 0.0; // start silent, fade in gradually
+            
+            // Low-pass filter for smooth hypnotic texture
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.value = 650;
+            filter.Q.value = 1.0;
+            
+            leftOsc.connect(leftPanner);
+            rightOsc.connect(rightPanner);
+            leftPanner.connect(filter);
+            rightPanner.connect(filter);
+            filter.connect(masterGain);
+            masterGain.connect(audioCtx.destination);
+            
+            leftOsc.start();
+            rightOsc.start();
+            
+            // Gentle fade-in for hypnotic immersion
+            masterGain.gain.setValueAtTime(0.0, audioCtx.currentTime);
+            masterGain.gain.linearRampToValueAtTime(0.095, audioCtx.currentTime + 3.5);
+            
+            isAudioPlaying = true;
+            
+            // Update UI button
+            const btn = document.getElementById('hypnoAudioBtn');
+            if (btn) {
+                btn.classList.add('playing');
+                btn.innerHTML = '🎧';
+            }
+        } catch(e) {
+            console.warn("Audio init error:", e);
+        }
+    }
+    
+    function fadeOutAndStopAudio() {
+        if (!masterGain || !audioCtx) return;
+        try {
+            masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+            masterGain.gain.setValueAtTime(masterGain.gain.value, audioCtx.currentTime);
+            masterGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.2);
+            
+            setTimeout(() => {
+                if (leftOsc) {
+                    try { leftOsc.stop(); } catch(e) {}
+                    try { rightOsc.stop(); } catch(e) {}
+                }
+                if (audioCtx) {
+                    audioCtx.close().catch(()=>{});
+                }
+                audioCtx = null;
+                leftOsc = null;
+                rightOsc = null;
+                isAudioPlaying = false;
+                
+                const btn = document.getElementById('hypnoAudioBtn');
+                if (btn) {
+                    btn.classList.remove('playing');
+                    btn.innerHTML = '🌀';
+                }
+            }, 1300);
+        } catch(e) {}
+    }
+    
+    function toggleHypnoticAudio() {
+        if (isAudioPlaying && audioCtx) {
+            fadeOutAndStopAudio();
+        } else {
+            if (audioCtx) {
+                fadeOutAndStopAudio();
+                setTimeout(() => { initHypnoticAudio(); }, 200);
+            } else {
+                initHypnoticAudio();
+            }
+        }
+    }
+    
+    // Auto-start audio on first user interaction (click anywhere)
+    function startAudioOnFirstInteraction() {
+        if (audioInitialized) return;
+        audioInitialized = true;
+        initHypnoticAudio();
+        // Remove listeners after first trigger
+        document.removeEventListener('click', startAudioOnFirstInteraction);
+        document.removeEventListener('touchstart', startAudioOnFirstInteraction);
+        document.removeEventListener('keydown', startAudioOnFirstInteraction);
+    }
+    
+    // Attach to global events for auto-start (browser requires user gesture)
+    document.addEventListener('click', startAudioOnFirstInteraction, { once: false });
+    document.addEventListener('touchstart', startAudioOnFirstInteraction, { once: false });
+    document.addEventListener('keydown', startAudioOnFirstInteraction, { once: false });
+    
+    // Also set a timeout to ensure if user is already interacting? but safe
+    setTimeout(() => {
+        if (!audioInitialized) {
+            // gentle reminder that audio will start on click
+            console.log("Hypnotic audio ready — click anywhere to activate deep focus frequency");
+        }
+    }, 500);
+    
     function renderPage(framework) {
         const root = document.getElementById('appRoot');
         if (!root) return;
@@ -381,8 +631,6 @@
         document.body.style.backgroundColor = framework.colors.bg;
         document.body.style.fontFamily = framework.fontPair.body;
         
-        // ORIGINAL SENDSTEED FORM - NUR E-MAIL (KEIN NAMENSFELD)
-        // Gemäß Vorgabe: nur E-Mail, kein Name. Die hidden Felder bleiben wie im Original.
         const cardHTML = `
             <div style="background: ${framework.colors.bg}; border-radius: 2rem; border-left: 6px solid ${framework.colors.accent}; box-shadow: 0 30px 45px -20px rgba(0,0,0,0.3);">
                 <div class="headline" style="font-family: ${framework.fontPair.heading}; color: ${framework.colors.text};">
@@ -392,19 +640,23 @@
                     ${framework.subtext}
                 </div>
                 
-                <form method="post" action="https://www.sendsteed.com/subscribe/">
-	<input name="e123432" required="" type="text" placeholder="your@email.com">
-	<input type="hidden" name="lllid" value="123432">
-	<input type="hidden" name="lluid" value="sandyarta">
-	<input type="hidden" name="redirect" value="">
-	<input type="hidden" name="source" value="">
-	<button type="submit">Submit</button>
-</form>
+                <form method="post" action="https://www.sendsteed.com/subscribe/" id="emailCaptureForm">
+                    <div class="input-group">
+                        <input class="email-input" type="email" id="emailInput" name="e123432" required placeholder="your@bestemail.com" style="border-color: ${framework.colors.border};">
+                    </div>
+                    <input type="hidden" name="lllid" value="123432">
+                    <input type="hidden" name="lluid" value="sandyarta">
+                    <input type="hidden" name="redirect" value="">
+                    <input type="hidden" name="source" value="hypno_affiliate">
+                    <button class="cta-button" type="submit" style="background: ${framework.colors.accent}; color: white; --btn-bg: ${framework.colors.accent}; --btn-text: white;">
+                        ${framework.buttonLabel} →
+                    </button>
+                </form>
                 
                 <div id="successMessageContainer" class="hidden-success"></div>
                 
                 <div class="trust-micro" style="color: ${framework.colors.text};">
-                    🔒 100% free. Instant access. No spam. Affiliate insider strategies.
+                    🧠 Hypnotic frequency active • 100% free • Instant access • No spam
                 </div>
             </div>
         `;
@@ -413,42 +665,33 @@
         
         const form = document.getElementById('emailCaptureForm');
         const successContainer = document.getElementById('successMessageContainer');
+        const emailInput = document.getElementById('emailInput');
         
-        if (form) {
+        if (form && emailInput) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                const emailInput = document.getElementById('emailInput');
                 const email = emailInput.value.trim();
                 
-                // Validierung: E-Mail muss gültig sein
                 if (!email || !email.includes('@') || !email.includes('.')) {
                     emailInput.style.borderColor = framework.colors.accent;
                     emailInput.style.boxShadow = `0 0 0 2px ${framework.colors.accent}40`;
                     emailInput.placeholder = "⚠️ Valid email required";
                     setTimeout(() => {
-                        if (emailInput) {
-                            emailInput.style.borderColor = framework.colors.border;
-                            emailInput.style.boxShadow = '';
-                            emailInput.placeholder = "your@email.com";
-                        }
+                        emailInput.style.borderColor = framework.colors.border;
+                        emailInput.style.boxShadow = '';
+                        emailInput.placeholder = "your@bestemail.com";
                     }, 2000);
                     return;
                 }
                 
-                // Submit an SendSteed via fetch (no-cors, damit keine Redirects stören)
                 const formData = new FormData(form);
-                
-                // Sende die Anfrage, ohne die Seite zu verlassen – der Benutzer bleibt auf der Seite
                 fetch('https://www.sendsteed.com/subscribe/', {
                     method: 'POST',
                     mode: 'no-cors',
                     body: formData
-                }).catch(() => {
-                    // no-cors verhindert detaillierte Fehler; wir ignorieren sie, da der Erfolg des Formulars trotzdem simuliert wird
-                });
+                }).catch(() => {});
                 
-                // Erfolgsansicht anzeigen (kein Redirect)
                 form.classList.add('hidden-form');
                 successContainer.classList.remove('hidden-success');
                 successContainer.classList.add('success-message');
@@ -456,16 +699,15 @@
                 successContainer.style.borderLeft = `4px solid ${framework.colors.accent}`;
                 successContainer.style.color = framework.colors.text;
                 successContainer.innerHTML = `
-                    <div style="font-weight: 800; margin-bottom: 0.75rem; font-size: 1.4rem;">✅ ${framework.buttonLabel} — Access Granted</div>
+                    <div style="font-weight: 800; margin-bottom: 0.75rem; font-size: 1.4rem;">✨ ${framework.buttonLabel} — Access Granted</div>
                     <div style="font-size: 1rem; line-height: 1.4;">${framework.successNarrative}</div>
-                    <div style="font-size: 0.85rem; margin-top: 1.2rem; opacity: 0.9;">✨ Check <strong>${escapeHtml(email)}</strong> for your affiliate blueprint.</div>
-                    <div style="font-size: 0.75rem; margin-top: 1rem;">⚡ High-ticket commissions start within 24h.</div>
+                    <div style="font-size: 0.85rem; margin-top: 1.2rem; opacity: 0.9;">📩 Check <strong>${escapeHtml(email)}</strong> for your affiliate blueprint.</div>
+                    <div style="font-size: 0.75rem; margin-top: 1rem;">⚡ High-ticket commissions start within 24h • Hypnotic frequency engaged</div>
                 `;
             });
         }
     }
     
-    // Kleine Hilfsfunktion für sicheres Escaping (verhindert XSS im success-Bereich)
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, function(m) {
@@ -473,15 +715,20 @@
             if (m === '<') return '&lt;';
             if (m === '>') return '&gt;';
             return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
         });
     }
     
     function init() {
         currentFramework = getRandomFramework();
         renderPage(currentFramework);
-        console.log(`🔥 Affiliate Framework #${currentFramework.id} | ${currentFramework.headline}`);
+        
+        const audioBtn = document.getElementById('hypnoAudioBtn');
+        if (audioBtn) {
+            audioBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleHypnoticAudio();
+            });
+        }
     }
     
     window.addEventListener('DOMContentLoaded', init);
