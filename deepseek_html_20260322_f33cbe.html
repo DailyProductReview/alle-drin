@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart Link Rotator | WarriorPlus Edition</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0f1a 0%, #0b1522 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 1.5rem;
+        }
+
+        .rotator-card {
+            max-width: 640px;
+            width: 100%;
+            background: rgba(12, 20, 28, 0.88);
+            backdrop-filter: blur(14px);
+            border-radius: 2.5rem;
+            border: 1px solid rgba(255, 160, 60, 0.25);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 200, 100, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 2.2rem 2rem 2.8rem;
+            transition: all 0.2s;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #FFE6B0 0%, #FFB347 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 140, 0, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 0.35rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #FFCF9A;
+            border: 0.5px solid rgba(255, 140, 0, 0.5);
+            margin-bottom: 1.5rem;
+        }
+
+        .spinner-container {
+            margin: 2rem 0 1.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 180, 60, 0.2);
+            border-top: 4px solid #FFA500;
+            border-right: 4px solid #FF6B35;
+            border-radius: 50%;
+            animation: spin 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .redirect-message {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #FFF2E0;
+            background: rgba(0, 0, 0, 0.45);
+            padding: 0.7rem 1.5rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .offer-name {
+            font-size: 1rem;
+            font-weight: 700;
+            background: linear-gradient(95deg, #2A2418, #1E1A12);
+            padding: 0.5rem 1.3rem;
+            border-radius: 40px;
+            color: #FFD966;
+            display: inline-block;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(255, 165, 0, 0.5);
+            font-family: monospace;
+            letter-spacing: 0.3px;
+        }
+
+        .info-text {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #AAB7C4;
+            border-top: 1px dashed rgba(255, 140, 0, 0.3);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .info-text span {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.25rem 0.9rem;
+            border-radius: 30px;
+            font-family: monospace;
+            font-size: 0.7rem;
+        }
+
+        .manual-link {
+            margin-top: 1.2rem;
+            font-size: 0.75rem;
+        }
+
+        .manual-link a {
+            color: #FFB347;
+            text-decoration: none;
+            border-bottom: 1px dotted #FFB347;
+            font-weight: 500;
+        }
+
+        .manual-link a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        .rotator-stats {
+            margin-top: 1rem;
+            font-size: 0.7rem;
+            color: #7E8C9E;
+            background: rgba(0,0,0,0.3);
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+        }
+
+        @media (max-width: 520px) {
+            .rotator-card {
+                padding: 1.5rem 1.2rem 2rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .redirect-message {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="rotator-card" id="rotatorRoot">
+    <h1>⚡ WARRIOR ROTATOR</h1>
+    <div class="badge">✦ RANDOM OFFER · FRESH DESTINATION PER VISIT ✦</div>
+
+    <div class="spinner-container">
+        <div class="loader"></div>
+    </div>
+
+    <div class="redirect-message" id="statusMsg">🎲 Analyzing best conversion path...</div>
+    <div id="offerBadge" class="offer-name">✨ loading warrior offers</div>
+
+    <div class="info-text">
+        <span>🔄 Smart rotator</span>
+        <span>🎲 100% random</span>
+        <span>⚡ instant redirect</span>
+    </div>
+    <div class="manual-link">
+        ⏳ Falls keine Weiterleitung startet → <a href="#" id="fallbackLink">hier klicken</a>
+    </div>
+    <div class="rotator-stats" id="statsInfo">—</div>
+</div>
+
+<script>
+    (function() {
+        // =============================================================
+        // NEUE WARRIORPLUS LINKS (exakt wie angegeben)
+        // =============================================================
+        const warriorUrls = [
+            "https://warriorplus.com/o2/a/l36z2rb/0",
+            "https://warriorplus.com/o2/a/yy3sf9c/0",
+            "https://warriorplus.com/o2/a/ml0gj3t/0"
+        ];
+
+        // Validierung
+        const validUrls = warriorUrls.filter(url => url && url.startsWith("https://warriorplus.com"));
+        
+        if (validUrls.length === 0) {
+            document.getElementById("statusMsg").innerText = "⚠️ Keine gültigen Links gefunden.";
+            document.getElementById("offerBadge").innerText = "error: missing urls";
+            return;
+        }
+
+        // --- ECHTER ZUFALL (kryptografisch oder Math.random) ---
+        let randomIndex;
+        if (window.crypto && window.crypto.getRandomValues) {
+            const randArray = new Uint32Array(1);
+            window.crypto.getRandomValues(randArray);
+            randomIndex = randArray[0] % validUrls.length;
+        } else {
+            randomIndex = Math.floor(Math.random() * validUrls.length);
+        }
+        
+        const selectedUrl = validUrls[randomIndex];
+        
+        // Extrahiere eine lesbare Kennung aus der WarriorPlus ID fürs UI
+        let displayName = "";
+        try {
+            // Aus URL wie https://warriorplus.com/o2/a/l36z2rb/0  -> letzter Teil vor /0
+            const match = selectedUrl.match(/\/a\/([^\/]+)/);
+            if (match && match[1]) {
+                let code = match[1];
+                // mach was hübsches draus
+                if (code === "l36z2rb") displayName = "🔥 OFFER L36";
+                else if (code === "yy3sf9c") displayName = "💎 OFFER YY3";
+                else if (code === "ml0gj3t") displayName = "⚡ OFFER ML0";
+                else displayName = code.toUpperCase();
+            } else {
+                displayName = "Warrior Special";
+            }
+        } catch(e) {
+            displayName = "Exclusive Deal";
+        }
+        
+        // UI-Elemente updaten
+        const offerBadgeEl = document.getElementById("offerBadge");
+        const statusMsgEl = document.getElementById("statusMsg");
+        const statsSpan = document.getElementById("statsInfo");
+        
+        if (offerBadgeEl) {
+            offerBadgeEl.innerText = `🎯 Aktives Angebot: ${displayName}`;
+        }
+        if (statusMsgEl) {
+            statusMsgEl.innerHTML = `✨ Leite weiter zu <strong>${displayName}</strong> · random rotator ✨`;
+        }
+        if (statsSpan) {
+            statsSpan.innerHTML = `📊 ${validUrls.length} WarriorPlus-Links im Pool · Besuch #${Math.floor(Math.random() * 999) + 1}`;
+        }
+        
+        // Fallback-Link setzen
+        const fallbackLink = document.getElementById("fallbackLink");
+        if (fallbackLink) {
+            fallbackLink.href = selectedUrl;
+            fallbackLink.target = "_top";
+            fallbackLink.innerText = `${displayName} direkt öffnen`;
+        }
+        
+        // Kleine Verzögerung für gutes UX (zeigt dass Rotator aktiv ist) – 450ms
+        const redirectDelayMs = 450;
+        let redirectTimer = setTimeout(function() {
+            window.location.replace(selectedUrl);
+        }, redirectDelayMs);
+        
+        // Falls User auf fallback klickt, Timer abbrechen um doppelte Navigation zu vermeiden
+        if (fallbackLink) {
+            fallbackLink.addEventListener("click", function(e) {
+                if (redirectTimer) {
+                    clearTimeout(redirectTimer);
+                }
+                // fallback link macht dann seine Arbeit (href schon gesetzt)
+            });
+        }
+        
+        // Extra-Sicherheit: nach 2 Sekunden falls noch nicht weiter (selten) nochmal triggern
+        setTimeout(function() {
+            if (document && document.visibilityState !== "hidden" && window.location.href.includes("rotator")) {
+                // Falls noch auf der Page
+                window.location.replace(selectedUrl);
+            }
+        }, 2000);
+        
+        // Preconnect für schnellere Verbindung zu warriorplus.com
+        const preconnectLink = document.createElement("link");
+        preconnectLink.rel = "preconnect";
+        preconnectLink.href = "https://warriorplus.com";
+        document.head.appendChild(preconnectLink);
+        
+        // Kleiner Console-Hinweis
+        console.log(`[Warrior Rotator] Aktive Links: ${validUrls.length}. Ausgewählt: ${selectedUrl}`);
+        
+        // KEIN Caching – Meta-Tags sind bereits gesetzt, zusätzlich nochmal Header-Emulation
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                // Falls Seite aus BFCache geladen, trotzdem sicherstellen dass rotator läuft (redundant aber sicher)
+                if (window.location.href.indexOf("rotator") !== -1) {
+                    window.location.reload();
+                }
+            }
+        });
+        
+    })();
+</script>
+</body>
+</html>
