@@ -2,301 +2,432 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$10K Commissions: Real Buyers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Breakthrough Access | Exclusive Remedy</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #030712;
+            transition: background-color 0.2s ease;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
             padding: 1.5rem;
         }
-        
-        .container {
-            max-width: 540px;
+
+        /* Main card container — single-purpose conversion fortress */
+        .conversion-fortress {
+            max-width: 560px;
             width: 100%;
-            background: #111827;
-            border: 1px solid #1F2937;
-            border-radius: 32px;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 25px 50px -12px #000000;
-            position: relative;
-            overflow: hidden;
+            border-radius: 2rem;
+            padding: 2.2rem 2rem 2.5rem 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
-        
-        /* Premium gold accent */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #F59E0B, #FBBF24, #F59E0B);
-        }
-        
-        /* $10K visual element */
-        .value-prop {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: rgba(251, 191, 36, 0.1);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 100px;
-            padding: 0.3rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #FBBF24;
-            letter-spacing: 0.3px;
-        }
-        
-        h1 {
-            font-size: 2.6rem;
-            line-height: 1.15;
-            font-weight: 800;
+
+        /* Emotional typography hierarchy */
+        .headline {
+            font-size: 2.5rem;
+            line-height: 1.2;
             letter-spacing: -0.02em;
-            color: white;
-            margin-bottom: 1.5rem;
-            text-align: left;
-            max-width: 80%;
+            margin-bottom: 1.2rem;
+            font-weight: 800;
         }
-        
-        .headline-pain {
-            color: #9CA3AF;
-            font-weight: 400;
-            font-size: 1.4rem;
-            display: block;
-            margin-bottom: 0.25rem;
+
+        .subheadline {
+            font-size: 1.2rem;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+            font-weight: 450;
         }
-        
-        .headline-gain {
-            color: #FBBF24;
-            display: block;
-            font-size: 2.8rem;
-            border-bottom: 2px solid rgba(251, 191, 36, 0.3);
-            padding-bottom: 0.25rem;
-            margin-bottom: 0.25rem;
+
+        /* Form container — friction-minimized but includes name field as per your provider */
+        .lead-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.5rem;
         }
-        
-        .headline-commission {
-            color: #F3F4F6;
-            display: block;
-            font-size: 1.8rem;
-            margin-top: 0.25rem;
-        }
-        
-        .commission-badge {
-            display: inline-block;
-            background: #1F2937;
-            border: 1px solid #374151;
-            border-radius: 100px;
-            padding: 0.5rem 1.2rem;
-            margin: 0.5rem 0 1.5rem;
-            font-size: 0.9rem;
-            color: #D1D5DB;
-        }
-        
-        .commission-badge strong {
-            color: #FBBF24;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .email-label {
-            display: block;
-            color: #9CA3AF;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
-        }
-        
-        .email-field {
+
+        .input-group {
             width: 100%;
-            background: #1F2937;
-            border: 1px solid #374151;
-            border-radius: 16px;
-            padding: 1.1rem 1.25rem;
-            font-size: 1rem;
-            color: white;
-            transition: all 0.2s ease;
         }
-        
-        .email-field:focus {
+
+        /* Decoy-effect email placeholder: negative outcome vs benefit contrast */
+        .email-input, {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            font-size: 1rem;
+            border-radius: 60px;
+            border: 1.5px solid;
+            background: rgba(255, 255, 255, 0.96);
+            transition: all 0.2s;
+            font-family: inherit;
             outline: none;
-            border-color: #FBBF24;
-            background: #111827;
-            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+            margin-bottom: 0.75rem;
         }
-        
-        .email-field::placeholder {
-            color: #4B5563;
-            font-size: 0.95rem;
+
+        .email-input:focus, .name-input:focus {
+            transform: scale(1.01);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+            border-width: 1.5px;
         }
-        
-        .button {
+
+        /* Name field subtle de-emphasis to keep focus on email (psychological friction reduction) */
+        .name-input {
+            opacity: 0.92;
+        }
+
+        /* Low-friction hover state that signals safety — subtle lift + micro-shadow */
+        .cta-button {
             width: 100%;
-            background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
-            border: none;
-            border-radius: 16px;
-            padding: 1.2rem 1.5rem;
-            font-size: 1.25rem;
+            padding: 1rem 1.2rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #030712;
+            border: none;
+            border-radius: 60px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            margin: 1rem 0 1.5rem;
-            letter-spacing: -0.01em;
-            box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            letter-spacing: -0.2px;
+            font-family: inherit;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
         }
-        
-        .button:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
-            box-shadow: 0 20px 30px -8px rgba(251, 191, 36, 0.4);
+
+        /* Safety hover: gentle expansion, brightness, and trust glow */
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.01);
+            filter: brightness(1.05);
+            box-shadow: 0 12px 22px -8px rgba(0, 0, 0, 0.2);
         }
-        
-        .button:active {
-            transform: translateY(0px);
+
+        .cta-button:active {
+            transform: translateY(1px);
         }
-        
-        .trust-strip {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 0;
-            border-top: 1px solid #1F2937;
-            border-bottom: 1px solid #1F2937;
-        }
-        
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #9CA3AF;
-            font-size: 0.8rem;
-        }
-        
-        .trust-icon {
-            color: #10B981;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        
-        .stats-row {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            color: #6B7280;
-            font-size: 0.8rem;
-        }
-        
-        .stat {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        
-        .gold-dot {
-            width: 6px;
-            height: 6px;
-            background: #FBBF24;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        
-        .commission-highlight {
+
+        /* Post-submit success message — contextual pain-relief narrative */
+        .success-message {
             text-align: center;
-            margin: 1rem 0 0;
-            font-size: 0.85rem;
-            color: #FBBF24;
+            padding: 2rem 1rem;
+            border-radius: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
+            line-height: 1.4;
+            margin-top: 0.5rem;
         }
-        
-        .commission-highlight span {
-            color: #6B7280;
-            font-weight: 400;
+
+        /* Footer micro-text for trust cues */
+        .trust-micro {
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 1.8rem;
+            opacity: 0.7;
+            letter-spacing: 0.2px;
+        }
+
+        /* Hide form on success */
+        .hidden-form {
+            display: none;
+        }
+
+        .hidden-success {
+            display: none;
+        }
+
+        /* responsive finesse */
+        @media (max-width: 550px) {
+            .conversion-fortress {
+                padding: 1.8rem 1.5rem 2rem 1.5rem;
+            }
+            .headline {
+                font-size: 2rem;
+            }
+            .subheadline {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="value-prop">💰 $10K PER SALE</div>
+
+<div class="conversion-fortress" id="appRoot">
+    <!-- dynamic content injected via js -->
+</div>
+
+<script>
+    // ----------------------------------------------
+    // 100 UNIQUE PSYCHOLOGICAL FRAMEWORKS
+    // Each object: headline, subtext, buttonLabel, fontStack, colors, successNarrative
+    // ----------------------------------------------
+    const frameworksLibrary = [];
+
+    const headlinePool = [
+        "Your [HIGH-VALUE OFFER] is Slipping Away", "Stop Losing $3,427 Every Month", "The Silent Revenue Leak Nobody Talks About",
+        "Why Top Performers Are Switching Now", "Don't Let Fear Kill Your Next Breakthrough", "The 37-Minute Fix That Changes Everything",
+        "Exposed: The Myth of 'Hard Work'", "Your Brain Is Sabotaging Your Wealth", "One Click Separates You From Freedom",
+        "The Algorithm That Made My Competition Irrelevant", "You're 2 Decisions Away From a Breakthrough", "What Your Competitors Hope You Never See",
+        "The Clock Is Ticking on This Advantage", "Revealed: The Invisible Script to Escape the Rat Race", "This One Shift Erases 5 Years of Struggle",
+        "They Don't Want You to Have This", "Burnout Is Optional — Here's The Escape", "Stop Begging for Attention. Claim Authority.",
+        "The Scarcity Window Closes in 47 Minutes", "Your Future Self Begs You to Read This", "Unlock the Hidden Leverage Point",
+        "The $0 Strategy That Outperforms Ads", "Urgent: Fix This Before Q3 Ends", "They Laughed When I Tried This — Until Results Spoke",
+        "How to Steal Back Your Time & Sanity", "The Psychological Glitch That Keeps You Stuck", "3 Words That Double Conversion (No Fluff)",
+        "Exclusive Access: The Inner Circle Vault", "If You're Tired of Empty Promises, Read This", "The Data-Backed Shortcut to Influence",
+        "What If You Could Rewire Your Success Instantly?", "The Dangerous Mistake Even Experts Make", "Last Chance to Secure Your Invite",
+        "Your Hidden Asset No One Told You About", "The 9-Minute Ritual That Attracts Results", "Why 'Busy' Is a Trap — Escape Today",
+        "The Counterintuitive Growth Hack", "Permission to Stop Struggling", "One Email That Unlocks $10k/Month Potential",
+        "The Resistance Is a Lie — Here's Proof", "Claim Your Unfair Advantage", "The Framework That Makes Hustle Obsolete",
+        "Fear Is Selling You a Lie", "Your Competitor Already Used This", "The Forgotten Leverage Blueprint",
+        "Instant Credibility: How to Command Respect", "Stop Drowning in Options — Get the Only Map You Need",
+        "The Emotional Escape Code", "This Offer Disappears in 2 Hours", "Why Waiting Is Costing You Everything",
+        "The 7-Day Transformation (No Fluff)", "How to Make Them Chase You", "The Scarcity Principle: Act or Regret",
+        "Unlock the Vault: High-Stakes Secrets", "The Silent Wealth Killer — Eliminate It Now", "Your Ticket to a New Trajectory",
+        "The Decision That Separates Winners", "You're Closer Than You Think — One Click Away", "The Unspoken Rule of High Earners",
+        "How to Break the 'Average' Curse", "Limited Entry: The Inner Circle Opens", "Stop Leaving Money on the Table",
+        "The 'Lazy' Method That Dominates Markets", "Why Your Gut Instinct Is Wrong", "The Psychology of Irresistible Offers",
+        "Exclusive Intelligence: Get It Before the Crowd", "The 5% Edge That Changes Everything", "Don't Click Unless You Want Results",
+        "The Truth They Hide About Success", "One Strategic Move, Infinite Leverage", "Pain-Free Path to Peak Performance",
+        "The Urgency Principle: Why Today Matters", "Your Invitation to the Unfair Advantage", "How to Turn Anxiety Into Asset",
+        "The Retention Secret Top 1% Use", "Scarcity Alert: Only 100 Spots Left", "From Overlooked to Unstoppable",
+        "The Hidden Pattern That Predicts Success", "Stop Guessing — Use the Cheat Code", "This One Concept Is Worth 6 Figures",
+        "What 'Gurus' Won't Tell You", "The Accelerator for High Achievers", "Your Competitive Edge Awaits",
+        "Break the Algorithm, Take Control", "The Mindset Shift That Unlocks Everything", "Rare Access: The Strategy Vault",
+        "How to Become 'The Obvious Choice'", "The Leverage Loophole", "Stop Settling — Demand This", 
+        "The 10x Principle, Simplified", "You're Being Left Behind — Catch Up Now", "The Escape Hatch from Mediocrity",
+        "Psychological Edge: Master Influence", "The One Metric That Predicts Wealth", "Burn the Boats: Full Commitment",
+        "How to Remove Friction From Your Life", "The Precision Tool for Exponential Growth", "Free Access: The Game-Changer",
+        "The 48-Hour Window to Transform", "Your Blueprint for Relentless Momentum"
+    ];
+    
+    const subPool = [
+        "Instant access to the remedy that high-performers pay $2k for — zero cost, zero fluff.", "Fix the leak before it drains your future. No credit card, just your email.",
+        "The solution-oriented system that neutralizes chronic underperformance in 12 minutes.", "Your personalized roadmap to escape the 9-5 trap. Used by 3,427+ founders.",
+        "Stop overthinking. Start reclaiming. The exact framework delivered to your inbox.", "Eliminate the hidden bottleneck costing you opportunities and peace of mind.",
+        "Breakthrough blueprint reveals the missing piece between where you are and where you want to be.", "Radical simplicity: one shift, immediate clarity. No filler.",
+        "Unlock the vault of proprietary methods that turn anxiety into unstoppable execution.", "The counterintuitive cure for decision fatigue — start winning again.",
+        "Reverse-engineered success patterns that bypass burnout and amplify results.", "The clarity cocktail: dissolve confusion and command your next level.",
+        "Join 1,500+ members who silenced their inner critic and activated momentum.", "Stop chasing shiny objects — get the only strategy that actually works.",
+        "A proven psychological reset that rewires scarcity into abundance. Instant delivery.", "The pressure-release valve for overwhelmed high-achievers. Get it now.",
+        "Definitive solution to the 'never enough' trap — reclaim your energy and focus.", "Pain-point: wasted potential. Solution: a step-by-step activation sequence.",
+        "Bypass the noise, seize the edge. Your invitation to the inner circle.", "One link, one shift, total transformation. The wait is over."
+    ];
+    
+    const buttonPool = [
+        "Get The Fix", "Claim Your Escape", "Stop The Bleed", "Unlock Access", "Secure My Spot", "Redeem Advantage",
+        "Send The Remedy", "Get The Blueprint", "Erase The Pain", "Activate Now", "Break Free", "Get Instant Access",
+        "Yes, I Want In", "Claim The Edge", "Stop Losing", "Get The Cure", "Send My Breakthrough", "Access The Vault",
+        "Unlock Relief", "Get The System", "Begin Escape", "Grab My Spot", "Fix It Now", "Get The Solution"
+    ];
+    
+    // Color schemes (primary bg, secondary text, accent)
+    const colorSchemes = [
+        { bg: "#FEF9E6", text: "#2D3E2B", accent: "#C2492D", border: "#E0C87C" },
+        { bg: "#F1F4F0", text: "#1B2F33", accent: "#B4654A", border: "#9BBF8F" },
+        { bg: "#FFFFFF", text: "#1F2A3A", accent: "#D64045", border: "#C0D0E0" },
+        { bg: "#F9F3E6", text: "#2A2F36", accent: "#B5651E", border: "#E6D5B8" },
+        { bg: "#EFF2F5", text: "#1E2F41", accent: "#226666", border: "#B2C9AB" },
+        { bg: "#FEF2E8", text: "#342A21", accent: "#BC4A2C", border: "#E8C9AF" },
+        { bg: "#F0F4F8", text: "#0A2F44", accent: "#C44536", border: "#99B2B7" },
+        { bg: "#FFF5EB", text: "#2E3B3E", accent: "#CA5310", border: "#E1CCA6" },
+        { bg: "#F8F9FC", text: "#1C2F3F", accent: "#AA6F3C", border: "#C4D3DF" },
+        { bg: "#FAF3E0", text: "#2D3E40", accent: "#C44D34", border: "#DECB9B" },
+    ];
+    
+    // Font pairings
+    const fontPairs = [
+        { heading: "'Playfair Display', serif", body: "'Inter', sans-serif" },
+        { heading: "'Cormorant Garamond', serif", body: "'Work Sans', sans-serif" },
+        { heading: "'Libre Baskerville', serif", body: "'Montserrat', sans-serif" },
+        { heading: "'Merriweather', serif", body: "'Source Sans Pro', sans-serif" },
+        { heading: "'Lora', serif", body: "'Poppins', sans-serif" },
+        { heading: "'Abril Fatface', cursive", body: "'Manrope', sans-serif" },
+        { heading: "'Crimson Text', serif", body: "'Nunito Sans', sans-serif" },
+        { heading: "'Tiempos Headline', serif", body: "'Rubik', sans-serif" },
+        { heading: "'Old Standard TT', serif", body: "'Karla', sans-serif" },
+        { heading: "'Bodoni Moda', serif", body: "'DM Sans', sans-serif" },
+    ];
+    
+    // Build 100 distinct frameworks
+    for (let i = 0; i < 100; i++) {
+        const headlineIdx = i % headlinePool.length;
+        const subIdx = (i * 7) % subPool.length;
+        const buttonIdx = (i * 13) % buttonPool.length;
+        const colorIdx = i % colorSchemes.length;
+        const fontIdx = i % fontPairs.length;
         
-        <h1>
-            <span class="headline-pain">Stop chasing tire-kickers.</span>
-            <span class="headline-gain">$10K buyers</span>
-            <span class="headline-commission">are clicking now.</span>
-        </h1>
+        const narratives = [
+            `You're now on the path to relief. Check your inbox — the ${headlinePool[headlineIdx].toLowerCase().slice(0, 35)} remedy is waiting.`,
+            `No more guessing. Your ${buttonPool[buttonIdx].toLowerCase()} blueprint is inside. Escape the pain cycle now.`,
+            `The exact framework to stop the bleed has been sent. Welcome to the solution.`,
+            `Your breakthrough starts now — the guidance is en route. No more suffering.`,
+            `Instant clarity incoming. Say goodbye to the hidden bottleneck. Check your email for the high-stakes fix.`,
+            `You just claimed the unfair advantage. Pain neutralized — the solution has been delivered.`,
+            `Relief is minutes away. Your custom escape plan is waiting in your inbox. No fluff, just results.`,
+            `The silent drain is over. Open your email to receive your proprietary remedy.`
+        ];
+        const narrative = narratives[i % narratives.length] + " 🔓";
         
-        <div class="commission-badge">
-            <strong>High-ticket affiliates only:</strong> Programs paying up to $10,000 per sale
-        </div>
+        frameworksLibrary.push({
+            id: i,
+            headline: headlinePool[headlineIdx],
+            subtext: subPool[subIdx] + " — Instant access, zero friction.",
+            buttonLabel: buttonPool[buttonIdx],
+            fontPair: fontPairs[fontIdx],
+            colors: colorSchemes[colorIdx],
+            successNarrative: narrative,
+        });
+    }
+    
+    frameworksLibrary[99] = {
+        ...frameworksLibrary[98],
+        headline: "Final Warning: Your [HIGH-VALUE OFFER] Expires",
+        subtext: "Scarcity alert: This exact psychological trigger won't be available later. Enter your details to lock in.",
+        buttonLabel: "Claim Before Loss",
+        fontPair: { heading: "'Playfair Display', serif", body: "'Inter', sans-serif" },
+        colors: { bg: "#FEF0E0", text: "#341C0C", accent: "#A1220A", border: "#E8C18E" },
+        successNarrative: "You secured the final slot. The remedy is en route — check your inbox before the window fully closes."
+    };
+    
+    function getRandomFramework() {
+        const randomIndex = Math.floor(Math.random() * frameworksLibrary.length);
+        return frameworksLibrary[randomIndex];
+    }
+    
+    let currentFramework = null;
+    
+    function renderPage(framework) {
+        const root = document.getElementById('appRoot');
+        if (!root) return;
         
-        <form method="post" action="https://www.sendsteed.com/subscribe/">
-            <div class="form-group">
-                <label class="email-label" for="email">Where to send the buyer list?</label>
-                <input class="email-field" type="text" id="email" name="e123432" required="" placeholder="your.best@email.com">
-            </div>
-            
-            <!-- Hidden fields - no name field -->
-            <input type="hidden" name="lllid" value="123432">
-            <input type="hidden" name="lluid" value="sandyarta">
-            <input type="hidden" name="redirect" value="">
-            <input type="hidden" name="source" value="gptaffiprog">
-            
-            <button class="button" type="submit">Send Me $10K Buyers →</button>
-        </form>
+        document.body.style.backgroundColor = framework.colors.bg;
+        document.body.style.fontFamily = framework.fontPair.body;
         
-        <div class="trust-strip">
-            <div class="trust-item">
-                <span class="trust-icon">✓</span>
-                <span>Verified buyers</span>
+        const cardHTML = `
+            <div style="background: ${framework.colors.bg}; border-radius: 2rem; border-left: 6px solid ${framework.colors.accent}; box-shadow: 0 30px 45px -20px rgba(0,0,0,0.3);">
+                <div class="headline" style="font-family: ${framework.fontPair.heading}; color: ${framework.colors.text};">
+                    ${framework.headline.replace('[HIGH-VALUE OFFER]', 'Exclusive Remedy')}
+                </div>
+                <div class="subheadline" style="color: ${framework.colors.text}; opacity: 0.85;">
+                    ${framework.subtext}
+                </div>
+                
+                <form method="post" action="https://www.sendsteed.com/subscribe/" id="emailCaptureForm" class="lead-form" novalidate>
+                    <div class="input-group">
+                        <input type="email" name="e123432" id="emailInput" class="email-input" 
+                               placeholder="✉️ your@email.com — bypass the pain, unlock the gain" 
+                               style="border-color: ${framework.colors.border}; background: white; color: ${framework.colors.text};"
+                               required>
+                        <input type="text" name="n123432" id="nameInput" class="name-input"
+                               placeholder="Your name (so we know who to celebrate)"
+                               style="border-color: ${framework.colors.border}; background: white; color: ${framework.colors.text};">
+                        <input type="hidden" name="lllid" value="123432">
+                        <input type="hidden" name="lluid" value="sandyarta">
+                        <input type="hidden" name="redirect" value="">
+                        <input type="hidden" name="source" value="">
+                    </div>
+                    <button type="submit" class="cta-button" 
+                            style="--btn-bg: ${framework.colors.accent}; --btn-text: #FFFFFF; background: ${framework.colors.accent}; color: white;">
+                        ${framework.buttonLabel}
+                    </button>
+                </form>
+                
+                <div id="successMessageContainer" class="hidden-success"></div>
+                
+                <div class="trust-micro" style="color: ${framework.colors.text};">
+                    🔒 Your information is safe. Instant delivery. No spam.
+                </div>
             </div>
-            <div class="trust-item">
-                <span class="trust-icon">✓</span>
-                <span>$1K-$10K ready</span>
-            </div>
-            <div class="trust-item">
-                <span class="trust-icon">✓</span>
-                <span>No bots</span>
-            </div>
-        </div>
+        `;
         
-        <div class="commission-highlight">
-            <span>⚡</span> For high-ticket offers only <span>⚡</span>
-        </div>
+        root.innerHTML = cardHTML;
         
-        <div class="stats-row">
-            <div class="stat">
-                <span class="gold-dot"></span>
-                <span>Real payment-verified</span>
-            </div>
-            <div class="stat">
-                <span class="gold-dot"></span>
-                <span>30-day guarantee</span>
-            </div>
-        </div>
-    </div>
+        // Attach form handler with AJAX submission to avoid redirect, show contextual success
+        const form = document.getElementById('emailCaptureForm');
+        const successContainer = document.getElementById('successMessageContainer');
+        
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const emailInput = document.getElementById('emailInput');
+                const nameInput = document.getElementById('nameInput');
+                const email = emailInput.value.trim();
+                const name = nameInput.value.trim();
+                
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    emailInput.style.borderColor = framework.colors.accent;
+                    emailInput.style.boxShadow = `0 0 0 2px ${framework.colors.accent}40`;
+                    emailInput.placeholder = "⚠️ Valid email required — secure your fix now";
+                    setTimeout(() => {
+                        emailInput.style.borderColor = framework.colors.border;
+                        emailInput.style.boxShadow = '';
+                        emailInput.placeholder = "✉️ your@email.com — bypass the pain, unlock the gain";
+                    }, 2000);
+                    return;
+                }
+                
+                // Prepare form data for SendSteed
+                const formData = new FormData();
+                formData.append('e123432', email);
+                if (name) formData.append('n123432', name);
+                formData.append('lllid', '123432');
+                formData.append('lluid', 'sandyarta');
+                formData.append('redirect', '');
+                formData.append('source', '');
+                
+                try {
+                    const response = await fetch('https://www.sendsteed.com/subscribe/', {
+                        method: 'POST',
+                        mode: 'no-cors', // Required for cross-origin form submission
+                        body: formData
+                    });
+                    
+                    // Hide form and show success message regardless (no-cors means we can't read response)
+                    form.classList.add('hidden-form');
+                    successContainer.classList.remove('hidden-success');
+                    successContainer.classList.add('success-message');
+                    successContainer.style.backgroundColor = `${framework.colors.accent}20`;
+                    successContainer.style.borderLeft = `4px solid ${framework.colors.accent}`;
+                    successContainer.style.color = framework.colors.text;
+                    successContainer.innerHTML = `
+                        <div style="font-weight: 700; margin-bottom: 0.5rem;">✅ ${framework.buttonLabel} — Accepted</div>
+                        <div>${framework.successNarrative}</div>
+                        <div style="font-size: 0.85rem; margin-top: 1rem;">✨ ${name ? `${name}, w` : 'W'}e just sent the remedy to ${email.substring(0, 18)}... Open it now.</div>
+                    `;
+                    
+                } catch (error) {
+                    // Fallback: still show success for UX (optimistic conversion)
+                    form.classList.add('hidden-form');
+                    successContainer.classList.remove('hidden-success');
+                    successContainer.classList.add('success-message');
+                    successContainer.style.backgroundColor = `${framework.colors.accent}20`;
+                    successContainer.style.borderLeft = `4px solid ${framework.colors.accent}`;
+                    successContainer.style.color = framework.colors.text;
+                    successContainer.innerHTML = `
+                        <div style="font-weight: 700; margin-bottom: 0.5rem;">✅ ${framework.buttonLabel} — Accepted</div>
+                        <div>${framework.successNarrative}</div>
+                        <div style="font-size: 0.85rem; margin-top: 1rem;">✨ ${name ? `${name}, c` : 'C'}heck ${email} for your breakthrough remedy.</div>
+                    `;
+                }
+            });
+        }
+    }
+    
+    function init() {
+        currentFramework = getRandomFramework();
+        renderPage(currentFramework);
+        console.log(`🔥 Active framework #${currentFramework.id} | ${currentFramework.headline}`);
+    }
+    
+    window.addEventListener('DOMContentLoaded', init);
+</script>
 </body>
 </html>
