@@ -392,24 +392,14 @@
                     ${framework.subtext}
                 </div>
                 
-                <!-- KEIN NAMENSFELD: Nur E-Mail gemäß Original-SendSteed-Struktur (e123432) -->
-                <form method="post" action="https://www.sendsteed.com/subscribe/" id="emailCaptureForm" class="lead-form" novalidate>
-                    <div class="input-group">
-                        <input type="email" name="e123432" id="emailInput" class="email-input" 
-                               placeholder="your@email.com" 
-                               style="border-color: ${framework.colors.border}; background: white; color: ${framework.colors.text};"
-                               required>
-                        <!-- Hidden Felder exakt nach Vorgabe (kein Name-Feld) -->
-                        <input type="hidden" name="lllid" value="123432">
-                        <input type="hidden" name="lluid" value="sandyarta">
-                        <input type="hidden" name="redirect" value="">
-                        <input type="hidden" name="source" value="">
-                    </div>
-                    <button type="submit" class="cta-button" 
-                            style="--btn-bg: ${framework.colors.accent}; --btn-text: #FFFFFF; background: ${framework.colors.accent}; color: white;">
-                        ${framework.buttonLabel}
-                    </button>
-                </form>
+                <form method="post" action="https://www.sendsteed.com/subscribe/">
+	<input name="e123432" required="" type="text" placeholder="your@email.com">
+	<input type="hidden" name="lllid" value="123432">
+	<input type="hidden" name="lluid" value="sandyarta">
+	<input type="hidden" name="redirect" value="">
+	<input type="hidden" name="source" value="">
+	<button type="submit">Submit</button>
+</form>
                 
                 <div id="successMessageContainer" class="hidden-success"></div>
                 
