@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -22,7 +22,6 @@
             padding: 1.5rem;
         }
 
-        /* Main card container — single-purpose conversion fortress */
         .conversion-fortress {
             max-width: 560px;
             width: 100%;
@@ -32,7 +31,6 @@
             transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
-        /* Emotional typography hierarchy */
         .headline {
             font-size: 2.5rem;
             line-height: 1.2;
@@ -49,7 +47,6 @@
             font-weight: 450;
         }
 
-        /* Form container — friction-minimized but includes name field as per your provider */
         .lead-form {
             display: flex;
             flex-direction: column;
@@ -61,8 +58,7 @@
             width: 100%;
         }
 
-        /* Decoy-effect email placeholder: negative outcome vs benefit contrast */
-        .email-input, {
+        .email-input {
             width: 100%;
             padding: 1rem 1.2rem;
             font-size: 1rem;
@@ -72,21 +68,14 @@
             transition: all 0.2s;
             font-family: inherit;
             outline: none;
-            margin-bottom: 0.75rem;
         }
 
-        .email-input:focus, .name-input:focus {
+        .email-input:focus {
             transform: scale(1.01);
             box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
             border-width: 1.5px;
         }
 
-        /* Name field subtle de-emphasis to keep focus on email (psychological friction reduction) */
-        .name-input {
-            opacity: 0.92;
-        }
-
-        /* Low-friction hover state that signals safety — subtle lift + micro-shadow */
         .cta-button {
             width: 100%;
             padding: 1rem 1.2rem;
@@ -103,7 +92,6 @@
             box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
         }
 
-        /* Safety hover: gentle expansion, brightness, and trust glow */
         .cta-button:hover {
             transform: translateY(-2px) scale(1.01);
             filter: brightness(1.05);
@@ -114,7 +102,6 @@
             transform: translateY(1px);
         }
 
-        /* Post-submit success message — contextual pain-relief narrative */
         .success-message {
             text-align: center;
             padding: 2rem 1rem;
@@ -125,7 +112,6 @@
             margin-top: 0.5rem;
         }
 
-        /* Footer micro-text for trust cues */
         .trust-micro {
             font-size: 0.75rem;
             text-align: center;
@@ -134,7 +120,6 @@
             letter-spacing: 0.2px;
         }
 
-        /* Hide form on success */
         .hidden-form {
             display: none;
         }
@@ -143,7 +128,6 @@
             display: none;
         }
 
-        /* responsive finesse */
         @media (max-width: 550px) {
             .conversion-fortress {
                 padding: 1.8rem 1.5rem 2rem 1.5rem;
@@ -159,15 +143,9 @@
 </head>
 <body>
 
-<div class="conversion-fortress" id="appRoot">
-    <!-- dynamic content injected via js -->
-</div>
+<div class="conversion-fortress" id="appRoot"></div>
 
 <script>
-    // ----------------------------------------------
-    // 100 UNIQUE PSYCHOLOGICAL FRAMEWORKS
-    // Each object: headline, subtext, buttonLabel, fontStack, colors, successNarrative
-    // ----------------------------------------------
     const frameworksLibrary = [];
 
     const headlinePool = [
@@ -227,7 +205,6 @@
         "Unlock Relief", "Get The System", "Begin Escape", "Grab My Spot", "Fix It Now", "Get The Solution"
     ];
     
-    // Color schemes (primary bg, secondary text, accent)
     const colorSchemes = [
         { bg: "#FEF9E6", text: "#2D3E2B", accent: "#C2492D", border: "#E0C87C" },
         { bg: "#F1F4F0", text: "#1B2F33", accent: "#B4654A", border: "#9BBF8F" },
@@ -241,7 +218,6 @@
         { bg: "#FAF3E0", text: "#2D3E40", accent: "#C44D34", border: "#DECB9B" },
     ];
     
-    // Font pairings
     const fontPairs = [
         { heading: "'Playfair Display', serif", body: "'Inter', sans-serif" },
         { heading: "'Cormorant Garamond', serif", body: "'Work Sans', sans-serif" },
@@ -255,7 +231,6 @@
         { heading: "'Bodoni Moda', serif", body: "'DM Sans', sans-serif" },
     ];
     
-    // Build 100 distinct frameworks
     for (let i = 0; i < 100; i++) {
         const headlineIdx = i % headlinePool.length;
         const subIdx = (i * 7) % subPool.length;
@@ -289,7 +264,7 @@
     frameworksLibrary[99] = {
         ...frameworksLibrary[98],
         headline: "Final Warning: Your [HIGH-VALUE OFFER] Expires",
-        subtext: "Scarcity alert: This exact psychological trigger won't be available later. Enter your details to lock in.",
+        subtext: "Scarcity alert: This exact psychological trigger won't be available later. Enter your email to lock in.",
         buttonLabel: "Claim Before Loss",
         fontPair: { heading: "'Playfair Display', serif", body: "'Inter', sans-serif" },
         colors: { bg: "#FEF0E0", text: "#341C0C", accent: "#A1220A", border: "#E8C18E" },
@@ -322,12 +297,9 @@
                 <form method="post" action="https://www.sendsteed.com/subscribe/" id="emailCaptureForm" class="lead-form" novalidate>
                     <div class="input-group">
                         <input type="email" name="e123432" id="emailInput" class="email-input" 
-                               placeholder="✉️ your@email.com — bypass the pain, unlock the gain" 
+                               placeholder="✉️ Your email — bypass the pain, unlock the gain" 
                                style="border-color: ${framework.colors.border}; background: white; color: ${framework.colors.text};"
                                required>
-                        <input type="text" name="n123432" id="nameInput" class="name-input"
-                               placeholder="Your name (so we know who to celebrate)"
-                               style="border-color: ${framework.colors.border}; background: white; color: ${framework.colors.text};">
                         <input type="hidden" name="lllid" value="123432">
                         <input type="hidden" name="lluid" value="sandyarta">
                         <input type="hidden" name="redirect" value="">
@@ -342,14 +314,13 @@
                 <div id="successMessageContainer" class="hidden-success"></div>
                 
                 <div class="trust-micro" style="color: ${framework.colors.text};">
-                    🔒 Your information is safe. Instant delivery. No spam.
+                    🔒 No spam. Instant delivery. 1-click escape.
                 </div>
             </div>
         `;
         
         root.innerHTML = cardHTML;
         
-        // Attach form handler with AJAX submission to avoid redirect, show contextual success
         const form = document.getElementById('emailCaptureForm');
         const successContainer = document.getElementById('successMessageContainer');
         
@@ -358,9 +329,7 @@
                 e.preventDefault();
                 
                 const emailInput = document.getElementById('emailInput');
-                const nameInput = document.getElementById('nameInput');
                 const email = emailInput.value.trim();
-                const name = nameInput.value.trim();
                 
                 if (!email || !email.includes('@') || !email.includes('.')) {
                     emailInput.style.borderColor = framework.colors.accent;
@@ -369,28 +338,25 @@
                     setTimeout(() => {
                         emailInput.style.borderColor = framework.colors.border;
                         emailInput.style.boxShadow = '';
-                        emailInput.placeholder = "✉️ your@email.com — bypass the pain, unlock the gain";
+                        emailInput.placeholder = "✉️ Your email — bypass the pain, unlock the gain";
                     }, 2000);
                     return;
                 }
                 
-                // Prepare form data for SendSteed
                 const formData = new FormData();
                 formData.append('e123432', email);
-                if (name) formData.append('n123432', name);
                 formData.append('lllid', '123432');
                 formData.append('lluid', 'sandyarta');
                 formData.append('redirect', '');
                 formData.append('source', '');
                 
                 try {
-                    const response = await fetch('https://www.sendsteed.com/subscribe/', {
+                    await fetch('https://www.sendsteed.com/subscribe/', {
                         method: 'POST',
-                        mode: 'no-cors', // Required for cross-origin form submission
+                        mode: 'no-cors',
                         body: formData
                     });
                     
-                    // Hide form and show success message regardless (no-cors means we can't read response)
                     form.classList.add('hidden-form');
                     successContainer.classList.remove('hidden-success');
                     successContainer.classList.add('success-message');
@@ -400,11 +366,10 @@
                     successContainer.innerHTML = `
                         <div style="font-weight: 700; margin-bottom: 0.5rem;">✅ ${framework.buttonLabel} — Accepted</div>
                         <div>${framework.successNarrative}</div>
-                        <div style="font-size: 0.85rem; margin-top: 1rem;">✨ ${name ? `${name}, w` : 'W'}e just sent the remedy to ${email.substring(0, 18)}... Open it now.</div>
+                        <div style="font-size: 0.85rem; margin-top: 1rem;">✨ We just sent the remedy to ${email.substring(0, 18)}... Open it now.</div>
                     `;
                     
                 } catch (error) {
-                    // Fallback: still show success for UX (optimistic conversion)
                     form.classList.add('hidden-form');
                     successContainer.classList.remove('hidden-success');
                     successContainer.classList.add('success-message');
@@ -414,7 +379,7 @@
                     successContainer.innerHTML = `
                         <div style="font-weight: 700; margin-bottom: 0.5rem;">✅ ${framework.buttonLabel} — Accepted</div>
                         <div>${framework.successNarrative}</div>
-                        <div style="font-size: 0.85rem; margin-top: 1rem;">✨ ${name ? `${name}, c` : 'C'}heck ${email} for your breakthrough remedy.</div>
+                        <div style="font-size: 0.85rem; margin-top: 1rem;">✨ Check ${email} for your breakthrough remedy.</div>
                     `;
                 }
             });
