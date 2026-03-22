@@ -146,8 +146,6 @@
 <div class="conversion-fortress" id="appRoot"></div>
 
 <script>
-    const frameworksLibrary = [];
-
     // ============================================
     // 100 AFFILIATE MARKETING / MAKE MONEY HEADLINES
     // ============================================
@@ -328,6 +326,7 @@
     ];
     
     // Build 100 unique affiliate frameworks
+    const frameworksLibrary = [];
     for (let i = 0; i < 100; i++) {
         const headlineIdx = i % headlinePool.length;
         const subIdx = (i * 17) % subPool.length;
@@ -382,7 +381,8 @@
         document.body.style.backgroundColor = framework.colors.bg;
         document.body.style.fontFamily = framework.fontPair.body;
         
-        // ORIGINAL SENDSTEED FORM - nur E-Mail, kein Name
+        // ORIGINAL SENDSTEED FORM - NUR E-MAIL (KEIN NAMENSFELD)
+        // Gemäß Vorgabe: nur E-Mail, kein Name. Die hidden Felder bleiben wie im Original.
         const cardHTML = `
             <div style="background: ${framework.colors.bg}; border-radius: 2rem; border-left: 6px solid ${framework.colors.accent}; box-shadow: 0 30px 45px -20px rgba(0,0,0,0.3);">
                 <div class="headline" style="font-family: ${framework.fontPair.heading}; color: ${framework.colors.text};">
@@ -392,13 +392,14 @@
                     ${framework.subtext}
                 </div>
                 
-                <!-- ORIGINAL SENDSTEED FORM - NO NAME FIELD -->
+                <!-- KEIN NAMENSFELD: Nur E-Mail gemäß Original-SendSteed-Struktur (e123432) -->
                 <form method="post" action="https://www.sendsteed.com/subscribe/" id="emailCaptureForm" class="lead-form" novalidate>
                     <div class="input-group">
                         <input type="email" name="e123432" id="emailInput" class="email-input" 
                                placeholder="your@email.com" 
                                style="border-color: ${framework.colors.border}; background: white; color: ${framework.colors.text};"
                                required>
+                        <!-- Hidden Felder exakt nach Vorgabe (kein Name-Feld) -->
                         <input type="hidden" name="lllid" value="123432">
                         <input type="hidden" name="lluid" value="sandyarta">
                         <input type="hidden" name="redirect" value="">
@@ -424,36 +425,40 @@
         const successContainer = document.getElementById('successMessageContainer');
         
         if (form) {
-            // Original form submission - no AJAX override, just normal submit
-            // But we want to show success message without redirect
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
                 const emailInput = document.getElementById('emailInput');
                 const email = emailInput.value.trim();
                 
+                // Validierung: E-Mail muss gültig sein
                 if (!email || !email.includes('@') || !email.includes('.')) {
                     emailInput.style.borderColor = framework.colors.accent;
                     emailInput.style.boxShadow = `0 0 0 2px ${framework.colors.accent}40`;
                     emailInput.placeholder = "⚠️ Valid email required";
                     setTimeout(() => {
-                        emailInput.style.borderColor = framework.colors.border;
-                        emailInput.style.boxShadow = '';
-                        emailInput.placeholder = "your@email.com";
+                        if (emailInput) {
+                            emailInput.style.borderColor = framework.colors.border;
+                            emailInput.style.boxShadow = '';
+                            emailInput.placeholder = "your@email.com";
+                        }
                     }, 2000);
                     return;
                 }
                 
-                // Submit to SendSteed via fetch to avoid redirect
+                // Submit an SendSteed via fetch (no-cors, damit keine Redirects stören)
                 const formData = new FormData(form);
                 
+                // Sende die Anfrage, ohne die Seite zu verlassen – der Benutzer bleibt auf der Seite
                 fetch('https://www.sendsteed.com/subscribe/', {
                     method: 'POST',
                     mode: 'no-cors',
                     body: formData
-                }).catch(() => {});
+                }).catch(() => {
+                    // no-cors verhindert detaillierte Fehler; wir ignorieren sie, da der Erfolg des Formulars trotzdem simuliert wird
+                });
                 
-                // Show success message
+                // Erfolgsansicht anzeigen (kein Redirect)
                 form.classList.add('hidden-form');
                 successContainer.classList.remove('hidden-success');
                 successContainer.classList.add('success-message');
@@ -461,12 +466,26 @@
                 successContainer.style.borderLeft = `4px solid ${framework.colors.accent}`;
                 successContainer.style.color = framework.colors.text;
                 successContainer.innerHTML = `
-                    <div style="font-weight: 700; margin-bottom: 0.5rem;">✅ ${framework.buttonLabel} — Access Granted</div>
-                    <div>${framework.successNarrative}</div>
-                    <div style="font-size: 0.85rem; margin-top: 1rem;">✨ Check ${email} for your affiliate blueprint.</div>
+                    <div style="font-weight: 800; margin-bottom: 0.75rem; font-size: 1.4rem;">✅ ${framework.buttonLabel} — Access Granted</div>
+                    <div style="font-size: 1rem; line-height: 1.4;">${framework.successNarrative}</div>
+                    <div style="font-size: 0.85rem; margin-top: 1.2rem; opacity: 0.9;">✨ Check <strong>${escapeHtml(email)}</strong> for your affiliate blueprint.</div>
+                    <div style="font-size: 0.75rem; margin-top: 1rem;">⚡ High-ticket commissions start within 24h.</div>
                 `;
             });
         }
+    }
+    
+    // Kleine Hilfsfunktion für sicheres Escaping (verhindert XSS im success-Bereich)
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
     }
     
     function init() {
