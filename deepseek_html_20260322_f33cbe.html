@@ -255,7 +255,6 @@
         "The Final Affiliate Blueprint — Everything You Need"
     ];
     
-    // Affiliate-spezifische Subheadlines
     const subPool = [
         "The exact affiliate system that generated $3,427 in 24 hours. No paid ads, no audience needed.",
         "Stop promoting offers that don't convert. Get the insider blueprint used by top affiliates.",
@@ -279,7 +278,6 @@
         "Your email list is a goldmine. Learn how to mine it for $847 per email."
     ];
     
-    // Affiliate-spezifische Button-Texte
     const buttonPool = [
         "Get The Affiliate Code",
         "Claim My Commissions",
@@ -360,7 +358,6 @@
         });
     }
     
-    // Final framework special
     frameworksLibrary[99] = {
         ...frameworksLibrary[98],
         headline: "⚠️ FINAL WARNING: Your Affiliate Commissions Are Being Stolen",
@@ -385,6 +382,7 @@
         document.body.style.backgroundColor = framework.colors.bg;
         document.body.style.fontFamily = framework.fontPair.body;
         
+        // ORIGINAL SENDSTEED FORM - nur E-Mail, kein Name
         const cardHTML = `
             <div style="background: ${framework.colors.bg}; border-radius: 2rem; border-left: 6px solid ${framework.colors.accent}; box-shadow: 0 30px 45px -20px rgba(0,0,0,0.3);">
                 <div class="headline" style="font-family: ${framework.fontPair.heading}; color: ${framework.colors.text};">
@@ -394,10 +392,11 @@
                     ${framework.subtext}
                 </div>
                 
+                <!-- ORIGINAL SENDSTEED FORM - NO NAME FIELD -->
                 <form method="post" action="https://www.sendsteed.com/subscribe/" id="emailCaptureForm" class="lead-form" novalidate>
                     <div class="input-group">
                         <input type="email" name="e123432" id="emailInput" class="email-input" 
-                               placeholder="✉️ Your email — unlock affiliate commissions now" 
+                               placeholder="your@email.com" 
                                style="border-color: ${framework.colors.border}; background: white; color: ${framework.colors.text};"
                                required>
                         <input type="hidden" name="lllid" value="123432">
@@ -425,7 +424,9 @@
         const successContainer = document.getElementById('successMessageContainer');
         
         if (form) {
-            form.addEventListener('submit', async (e) => {
+            // Original form submission - no AJAX override, just normal submit
+            // But we want to show success message without redirect
+            form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
                 const emailInput = document.getElementById('emailInput');
@@ -434,54 +435,36 @@
                 if (!email || !email.includes('@') || !email.includes('.')) {
                     emailInput.style.borderColor = framework.colors.accent;
                     emailInput.style.boxShadow = `0 0 0 2px ${framework.colors.accent}40`;
-                    emailInput.placeholder = "⚠️ Valid email required — secure your affiliate blueprint now";
+                    emailInput.placeholder = "⚠️ Valid email required";
                     setTimeout(() => {
                         emailInput.style.borderColor = framework.colors.border;
                         emailInput.style.boxShadow = '';
-                        emailInput.placeholder = "✉️ Your email — unlock affiliate commissions now";
+                        emailInput.placeholder = "your@email.com";
                     }, 2000);
                     return;
                 }
                 
-                const formData = new FormData();
-                formData.append('e123432', email);
-                formData.append('lllid', '123432');
-                formData.append('lluid', 'sandyarta');
-                formData.append('redirect', '');
-                formData.append('source', '');
+                // Submit to SendSteed via fetch to avoid redirect
+                const formData = new FormData(form);
                 
-                try {
-                    await fetch('https://www.sendsteed.com/subscribe/', {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        body: formData
-                    });
-                    
-                    form.classList.add('hidden-form');
-                    successContainer.classList.remove('hidden-success');
-                    successContainer.classList.add('success-message');
-                    successContainer.style.backgroundColor = `${framework.colors.accent}20`;
-                    successContainer.style.borderLeft = `4px solid ${framework.colors.accent}`;
-                    successContainer.style.color = framework.colors.text;
-                    successContainer.innerHTML = `
-                        <div style="font-weight: 700; margin-bottom: 0.5rem;">✅ ${framework.buttonLabel} — Access Granted</div>
-                        <div>${framework.successNarrative}</div>
-                        <div style="font-size: 0.85rem; margin-top: 1rem;">✨ Check ${email.substring(0, 18)}... for your affiliate blueprint.</div>
-                    `;
-                    
-                } catch (error) {
-                    form.classList.add('hidden-form');
-                    successContainer.classList.remove('hidden-success');
-                    successContainer.classList.add('success-message');
-                    successContainer.style.backgroundColor = `${framework.colors.accent}20`;
-                    successContainer.style.borderLeft = `4px solid ${framework.colors.accent}`;
-                    successContainer.style.color = framework.colors.text;
-                    successContainer.innerHTML = `
-                        <div style="font-weight: 700; margin-bottom: 0.5rem;">✅ ${framework.buttonLabel} — Access Granted</div>
-                        <div>${framework.successNarrative}</div>
-                        <div style="font-size: 0.85rem; margin-top: 1rem;">✨ Check ${email} for your affiliate blueprint now.</div>
-                    `;
-                }
+                fetch('https://www.sendsteed.com/subscribe/', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                }).catch(() => {});
+                
+                // Show success message
+                form.classList.add('hidden-form');
+                successContainer.classList.remove('hidden-success');
+                successContainer.classList.add('success-message');
+                successContainer.style.backgroundColor = `${framework.colors.accent}20`;
+                successContainer.style.borderLeft = `4px solid ${framework.colors.accent}`;
+                successContainer.style.color = framework.colors.text;
+                successContainer.innerHTML = `
+                    <div style="font-weight: 700; margin-bottom: 0.5rem;">✅ ${framework.buttonLabel} — Access Granted</div>
+                    <div>${framework.successNarrative}</div>
+                    <div style="font-size: 0.85rem; margin-top: 1rem;">✨ Check ${email} for your affiliate blueprint.</div>
+                `;
             });
         }
     }
