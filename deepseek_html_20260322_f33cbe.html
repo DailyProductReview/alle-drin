@@ -1,4 +1,642 @@
 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Affiliate Breakthrough | High-Ticket Commissions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        /* 3D Hintergrund-Effekt */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .conversion-fortress {
+            max-width: 560px;
+            width: 100%;
+            border-radius: 2rem;
+            padding: 2.2rem 2rem 2.5rem 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(0px);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .headline {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .subheadline {
+            font-size: 1.2rem;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+            font-weight: 450;
+            animation: slideInRight 0.5s ease-out 0.1s both;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .lead-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            animation: fadeIn 0.5s ease-out 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .input-group {
+            width: 100%;
+            position: relative;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            font-size: 1rem;
+            border-radius: 60px;
+            border: 2px solid;
+            background: rgba(255, 255, 255, 0.98);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            font-family: inherit;
+            outline: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .email-input:focus {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-width: 2px;
+        }
+
+        .email-input:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            letter-spacing: -0.2px;
+            font-family: inherit;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 3D Button Effekt */
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            filter: brightness(1.08);
+            box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:active {
+            transform: translateY(1px) scale(0.98);
+            transition: 0.05s;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-radius: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-top: 0.5rem;
+            animation: successPulse 0.6s ease-out;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        @keyframes successPulse {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .trust-micro {
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 1.8rem;
+            opacity: 0.7;
+            letter-spacing: 0.2px;
+            transition: opacity 0.3s ease;
+            animation: fadeIn 0.5s ease-out 0.3s both;
+        }
+
+        .trust-micro:hover {
+            opacity: 1;
+        }
+
+        .hidden-form {
+            display: none;
+        }
+
+        .hidden-success {
+            display: none;
+        }
+
+        /* 3D Card Effekt */
+        .conversion-fortress:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 35px 55px -15px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 550px) {
+            .conversion-fortress {
+                padding: 1.8rem 1.5rem 2rem 1.5rem;
+            }
+            .headline {
+                font-size: 2rem;
+            }
+            .subheadline {
+                font-size: 1rem;
+            }
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.9rem 1rem;
+            }
+        }
+
+        /* Glänzender Rahmen-Effekt */
+        .conversion-fortress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 2rem;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.3) 100%);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .conversion-fortress:hover::after {
+            opacity: 1;
+        }
+
+        /* Input 3D Effekt */
+        .input-group {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div class="conversion-fortress" id="appRoot"></div>
+
+<script>
+    // ============================================
+    // 100 AFFILIATE MARKETING / MAKE MONEY HEADLINES
+    // ============================================
+    const headlinePool = [
+        "Your Affiliate Commissions Are Leaking $47/Day",
+        "The ClickBank Loophole That Printed $12k in 7 Days",
+        "Why 97% of Affiliates Fail (And How to Join the 3%)",
+        "One Hidden Affiliate URL Made Me $3,427 Overnight",
+        "Stop Promoting Products That Don't Pay",
+        "The CPA Hack That Bypasses 90% of Competition",
+        "Your Competitor Is Stealing Your Affiliate Sales",
+        "How to Make $473/Day With Zero Followers",
+        "The 'Lazy Affiliate' Method That Actually Works",
+        "Exposed: The ClickBank Algorithm Nobody Talks About",
+        "From $0 to $10k/Month With One Simple Funnel",
+        "The Affiliate Offer That Converts at 14.7%",
+        "Why Your Affiliate Links Are Getting Ignored",
+        "The Psychology Behind 'Add to Cart' — Affiliate Edition",
+        "How to Steal High-Converting Affiliate Campaigns",
+        "The 15-Minute Affiliate Hack That Pays Daily",
+        "Passive Income Lie? Try This Affiliate System Instead",
+        "The One Metric That Doubled My Affiliate Revenue",
+        "Secret Affiliate Network Top Earners Won't Share",
+        "Your Email List Is a Goldmine — Here's How to Mine It",
+        "Affiliate Trap: Why Low Ticket Offers Keep You Broke",
+        "The High-Ticket Affiliate Blueprint (No Cold DMs)",
+        "How I Made $847 in 2 Hours With One Affiliate Email",
+        "The Review Site Method That Generates $200/Day",
+        "Stop Chasing Shiny Objects — Use This Affiliate System",
+        "The Forbidden Affiliate Strategy That Still Works",
+        "How to Rank Affiliate Offers on Page 1 (Without Backlinks)",
+        "Your Affiliate Website Is Dead — Do This Instead",
+        "The 'Productless' Affiliate Model That Scales",
+        "Why Affiliate Marketing Feels Hard (And How to Fix It)",
+        "The 80/20 Affiliate Secret Top Pros Use",
+        "One Affiliate Campaign That Funded My Lifestyle",
+        "How to Predict Winning Affiliate Offers Before Launch",
+        "The Cookie Stuffing Myth — Real Affiliate Tactics",
+        "Your Traffic Is Worth 10x More — Here's Proof",
+        "The Affiliate Funnel That Converts at 27%",
+        "Stop Wasting Money on Ads — Do This Affiliate Method",
+        "How to Get Affiliate Commissions While You Sleep",
+        "The 'Done For You' Affiliate System That Works",
+        "Affiliate Marketing 2026: What Still Works",
+        "The ClickBank Secret That Made Me Quit My Job",
+        "Why Your Affiliate Emails Go to Spam (Fix Inside)",
+        "The Bonus Strategy That Tripled My Affiliate Sales",
+        "How to Build a $5k/Month Affiliate Site in 90 Days",
+        "The Affiliate Arbitrage Method (Risk-Free)",
+        "One SEO Trick That Floods Affiliate Sales",
+        "The 'Micro-Offer' Affiliate Model No One Talks About",
+        "Affiliate vs. Dropshipping — The Real Winner",
+        "How to Get Affiliate Links on Autopilot",
+        "The 10x Affiliate Formula (Stop Chasing Pennies)",
+        "Your First $1k in Affiliate Marketing — The Fast Path",
+        "The Dark Side of Affiliate Marketing (And How to Win)",
+        "Affiliate Commissions Are Down? Use This Strategy",
+        "How to Leverage AI for Affiliate Domination",
+        "The 'Invisible' Affiliate Method That Generates $200/Day",
+        "Why Affiliate Marketers Are Switching to This Model",
+        "The High-Ticket Affiliate Loophole (No Audience Needed)",
+        "How to Get Paid for Every Click (Even Without Sales)",
+        "The Affiliate Code That Unlocks 30% Higher Payouts",
+        "Stop Sending Traffic — Start Sending Conversions",
+        "The 5-Step Affiliate Funnel That Never Fails",
+        "Affiliate Marketing Burnout? Try This Instead",
+        "How to Find Hidden Affiliate Gems (Before the Crowd)",
+        "The CPA Method That Banks $87/Hour",
+        "Your Affiliate Strategy Is Broken — Here's the Fix",
+        "The One Page That Generates $1,200/Month Affiliate",
+        "How to Reverse Engineer Winning Affiliate Campaigns",
+        "The Affiliate Trust Hack That Skyrockets Conversions",
+        "Why 'Free Traffic' Affiliates Stay Broke",
+        "The Paid Ads Affiliate System (Low Budget, High ROI)",
+        "How to Steal Affiliate Offers from Competitors",
+        "The 30-Minute Affiliate Site That Pays Bills",
+        "Affiliate Marketing Without a Website? Yes — Here's How",
+        "The 'Pre-Sell' Method That Doubles Affiliate Earnings",
+        "How to Get Affiliate Sales From Reddit (Ethically)",
+        "The YouTube Affiliate Strategy Nobody Is Using",
+        "Your Affiliate Commissions Are Capped — Break Through",
+        "The 'Subscription' Affiliate Model for Recurring Income",
+        "Why Affiliate Marketing Feels Like a Scam (And How to Fix)",
+        "The 7-Figure Affiliate Secret (No BS)",
+        "How to Build an Affiliate Empire With One Offer",
+        "The Affiliate Overlooked Traffic Source That Prints Money",
+        "From Side Hustle to Full-Time Affiliate in 60 Days",
+        "The ClickBank Algorithm Update — How to Adapt",
+        "Your Affiliate Links Are Cold — Heat Them Up",
+        "The 'Swipe File' Method for Affiliate Success",
+        "How to Create Affiliate Content That Sells Itself",
+        "The Affiliate Email Sequence That Converts at 18%",
+        "Why Most Affiliate Marketers Quit (And How to Persist)",
+        "The Affiliate 2.0 Model — Future-Proof Your Income",
+        "How to Get High-Ticket Affiliate Offers (Even as a Beginner)",
+        "The Split-Test That Increased My Affiliate ROI by 340%",
+        "Affiliate Marketing on Autopilot — The System",
+        "The 6-Figure Affiliate Framework (Step-by-Step)",
+        "Why Your Affiliate Income Is Stuck (And How to Break Out)",
+        "The One Metric That Predicts Affiliate Success",
+        "Affiliate Marketing Without Burnout — The Balance",
+        "Your First $10k Affiliate Month — The Blueprint",
+        "The Affiliate Leverage Point Nobody Talks About",
+        "How to Become a Top 1% Affiliate in Any Niche",
+        "The Final Affiliate Blueprint — Everything You Need"
+    ];
+    
+    const subPool = [
+        "The exact affiliate system that generated $3,427 in 24 hours. No paid ads, no audience needed.",
+        "Stop promoting offers that don't convert. Get the insider blueprint used by top affiliates.",
+        "Zero followers? No problem. This method works regardless of your current audience size.",
+        "The hidden CPA loophole that 97% of affiliates don't know exists. Access it now.",
+        "Why your affiliate links are getting ignored — and how to fix it in 11 minutes.",
+        "Instant access to the high-ticket affiliate framework. No cold DMs, no complicated funnels.",
+        "The ClickBank algorithm exposed. Get the strategy that made me $12k in 7 days.",
+        "Your competitors are using this. Don't get left behind — get the system now.",
+        "One simple affiliate funnel that converts at 27%. Delivered straight to your inbox.",
+        "The 2026 affiliate playbook. What still works, what's dead, and where the money is.",
+        "Free access to the 'Done For You' affiliate system. Just enter your email to unlock.",
+        "Stop wasting money on ads. Get the organic traffic method that pays daily.",
+        "The high-ticket affiliate blueprint. One sale = $1,000+. No experience required.",
+        "How to get affiliate commissions while you sleep. The automated system revealed.",
+        "Your first $1k in affiliate marketing — the fast path. No fluff, just results.",
+        "The 5-step affiliate funnel that never fails. Used by top 1% earners.",
+        "Affiliate marketing burnout? Here's the sustainable system that actually works.",
+        "How to find winning affiliate offers before the crowd. Insider access included.",
+        "The 'Productless' affiliate model — promote nothing, get paid. Limited access.",
+        "Your email list is a goldmine. Learn how to mine it for $847 per email."
+    ];
+    
+    const buttonPool = [
+        "Get The Affiliate Code",
+        "Claim My Commissions",
+        "Unlock The System",
+        "Send The Blueprint",
+        "Get The $1k/Month Plan",
+        "Access Affiliate Vault",
+        "Claim The Loophole",
+        "Get Paid Now",
+        "Send My Affiliate Kit",
+        "Unlock High-Ticket Access",
+        "Get The 27% Funnel",
+        "Claim My First $1k",
+        "Send The Strategy",
+        "Get The Affiliate Edge",
+        "Stop Losing Money",
+        "Get The 2026 Playbook",
+        "Access The Insider Method",
+        "Claim The CPA Hack",
+        "Get The Done-For-You System",
+        "Send The Blueprint Now"
+    ];
+    
+    const colorSchemes = [
+        { bg: "linear-gradient(135deg, #FEF9E6 0%, #FFF4E0 100%)", text: "#2D3E2B", accent: "#C2492D", border: "#E0C87C", gradient: true },
+        { bg: "linear-gradient(135deg, #F1F4F0 0%, #E8EDE5 100%)", text: "#1B2F33", accent: "#B4654A", border: "#9BBF8F", gradient: true },
+        { bg: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFE 100%)", text: "#1F2A3A", accent: "#D64045", border: "#C0D0E0", gradient: true },
+        { bg: "linear-gradient(135deg, #F9F3E6 0%, #F5ECDE 100%)", text: "#2A2F36", accent: "#B5651E", border: "#E6D5B8", gradient: true },
+        { bg: "linear-gradient(135deg, #EFF2F5 0%, #E6EBF0 100%)", text: "#1E2F41", accent: "#226666", border: "#B2C9AB", gradient: true },
+        { bg: "linear-gradient(135deg, #FEF2E8 0%, #FCEADE 100%)", text: "#342A21", accent: "#BC4A2C", border: "#E8C9AF", gradient: true },
+        { bg: "linear-gradient(135deg, #F0F4F8 0%, #E8EEF5 100%)", text: "#0A2F44", accent: "#C44536", border: "#99B2B7", gradient: true },
+        { bg: "linear-gradient(135deg, #FFF5EB 0%, #FFEFE0 100%)", text: "#2E3B3E", accent: "#CA5310", border: "#E1CCA6", gradient: true },
+        { bg: "linear-gradient(135deg, #F8F9FC 0%, #F0F3F9 100%)", text: "#1C2F3F", accent: "#AA6F3C", border: "#C4D3DF", gradient: true },
+        { bg: "linear-gradient(135deg, #FAF3E0 0%, #F5ECD8 100%)", text: "#2D3E40", accent: "#C44D34", border: "#DECB9B", gradient: true },
+    ];
+    
+    const fontPairs = [
+        { heading: "'Playfair Display', serif", body: "'Inter', sans-serif" },
+        { heading: "'Cormorant Garamond', serif", body: "'Work Sans', sans-serif" },
+        { heading: "'Libre Baskerville', serif", body: "'Montserrat', sans-serif" },
+        { heading: "'Merriweather', serif", body: "'Source Sans Pro', sans-serif" },
+        { heading: "'Lora', serif", body: "'Poppins', sans-serif" },
+        { heading: "'Abril Fatface', cursive", body: "'Manrope', sans-serif" },
+        { heading: "'Crimson Text', serif", body: "'Nunito Sans', sans-serif" },
+        { heading: "'Tiempos Headline', serif", body: "'Rubik', sans-serif" },
+        { heading: "'Old Standard TT', serif", body: "'Karla', sans-serif" },
+        { heading: "'Bodoni Moda', serif", body: "'DM Sans', sans-serif" },
+    ];
+    
+    // Build 100 unique affiliate frameworks
+    const frameworksLibrary = [];
+    for (let i = 0; i < 100; i++) {
+        const headlineIdx = i % headlinePool.length;
+        const subIdx = (i * 17) % subPool.length;
+        const buttonIdx = (i * 13) % buttonPool.length;
+        const colorIdx = i % colorSchemes.length;
+        const fontIdx = i % fontPairs.length;
+        
+        const affiliateNarratives = [
+            `✅ Affiliate system unlocked! Check your inbox — the ${headlinePool[headlineIdx].toLowerCase().slice(0, 40)} strategy is waiting. Start earning in the next hour.`,
+            `💰 Your commission blueprint is en route. ${buttonPool[buttonIdx]} delivered. Check your email now.`,
+            `📈 Welcome to the top 3%. The exact affiliate framework that generates $473/day has been sent to your inbox.`,
+            `💸 No more wasted traffic. Your personalized affiliate playbook is waiting — open your email to start.`,
+            `🚀 Breakthrough incoming! The ${headlinePool[headlineIdx].slice(0, 35)} method is inside. Check your email for instant access.`,
+            `🔥 You just unlocked the affiliate vault. The high-ticket system is in your inbox — go claim your first commission.`,
+            `💎 Exclusive affiliate access granted. The done-for-you funnel blueprint is waiting. Check your email now.`,
+            `🎯 Your affiliate edge is here. Open your email to get the exact strategy that doubled my ROI by 340%.`
+        ];
+        const narrative = affiliateNarratives[i % affiliateNarratives.length];
+        
+        frameworksLibrary.push({
+            id: i,
+            headline: headlinePool[headlineIdx],
+            subtext: subPool[subIdx],
+            buttonLabel: buttonPool[buttonIdx],
+            fontPair: fontPairs[fontIdx],
+            colors: colorSchemes[colorIdx],
+            successNarrative: narrative,
+        });
+    }
+    
+    frameworksLibrary[99] = {
+        ...frameworksLibrary[98],
+        headline: "⚠️ FINAL WARNING: Your Affiliate Commissions Are Being Stolen",
+        subtext: "This exact affiliate loophole closes in 2 hours. Enter your email now before it's gone forever.",
+        buttonLabel: "Claim Before It's Gone",
+        fontPair: { heading: "'Playfair Display', serif", body: "'Inter', sans-serif" },
+        colors: { bg: "linear-gradient(135deg, #FEF0E0 0%, #FCE8D8 100%)", text: "#341C0C", accent: "#A1220A", border: "#E8C18E", gradient: true },
+        successNarrative: "🔥 You secured the final spot! The affiliate loophole blueprint is in your inbox. Open it now before the window closes."
+    };
+    
+    function getRandomFramework() {
+        const randomIndex = Math.floor(Math.random() * frameworksLibrary.length);
+        return frameworksLibrary[randomIndex];
+    }
+    
+    let currentFramework = null;
+    
+    function renderPage(framework) {
+        const root = document.getElementById('appRoot');
+        if (!root) return;
+        
+        document.body.style.background = framework.colors.bg;
+        document.body.style.fontFamily = framework.fontPair.body;
+        
+        const cardHTML = `
+            <div style="background: rgba(255,255,255,0.95); border-radius: 2rem; border-left: 6px solid ${framework.colors.accent}; box-shadow: 0 30px 45px -20px rgba(0,0,0,0.3); backdrop-filter: blur(0px);">
+                <div class="headline" style="font-family: ${framework.fontPair.heading}; color: ${framework.colors.text};">
+                    ${framework.headline}
+                </div>
+                <div class="subheadline" style="color: ${framework.colors.text}; opacity: 0.85;">
+                    ${framework.subtext}
+                </div>
+                
+                <form method="post" action="https://www.sendsteed.com/subscribe/" id="emailCaptureForm" class="lead-form" novalidate>
+                    <div class="input-group">
+                        <input type="email" name="e123432" id="emailInput" class="email-input" 
+                               placeholder="your@email.com" 
+                               style="border-color: ${framework.colors.border}; background: white; color: ${framework.colors.text};"
+                               required>
+                        <input type="hidden" name="lllid" value="123432">
+                        <input type="hidden" name="lluid" value="sandyarta">
+                        <input type="hidden" name="redirect" value="">
+                        <input type="hidden" name="source" value="">
+                    </div>
+                    <button type="submit" class="cta-button" 
+                            style="--btn-bg: ${framework.colors.accent}; --btn-text: #FFFFFF; background: ${framework.colors.accent}; color: white;">
+                        ${framework.buttonLabel}
+                    </button>
+                </form>
+                
+                <div id="successMessageContainer" class="hidden-success"></div>
+                
+                <div class="trust-micro" style="color: ${framework.colors.text};">
+                    🔒 100% free. Instant access. No spam. Affiliate insider strategies.
+                </div>
+            </div>
+        `;
+        
+        root.innerHTML = cardHTML;
+        
+        const form = document.getElementById('emailCaptureForm');
+        const successContainer = document.getElementById('successMessageContainer');
+        
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const emailInput = document.getElementById('emailInput');
+                const email = emailInput.value.trim();
+                
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    emailInput.style.borderColor = framework.colors.accent;
+                    emailInput.style.boxShadow = `0 0 0 3px ${framework.colors.accent}60`;
+                    emailInput.placeholder = "⚠️ Valid email required";
+                    setTimeout(() => {
+                        if (emailInput) {
+                            emailInput.style.borderColor = framework.colors.border;
+                            emailInput.style.boxShadow = '';
+                            emailInput.placeholder = "your@email.com";
+                        }
+                    }, 2000);
+                    return;
+                }
+                
+                const formData = new FormData(form);
+                
+                fetch('https://www.sendsteed.com/subscribe/', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                }).catch(() => {});
+                
+                form.classList.add('hidden-form');
+                successContainer.classList.remove('hidden-success');
+                successContainer.classList.add('success-message');
+                successContainer.style.backgroundColor = `${framework.colors.accent}15`;
+                successContainer.style.borderLeft = `4px solid ${framework.colors.accent}`;
+                successContainer.style.color = framework.colors.text;
+                successContainer.innerHTML = `
+                    <div style="font-weight: 800; margin-bottom: 0.75rem; font-size: 1.4rem;">✅ ${framework.buttonLabel} — Access Granted</div>
+                    <div style="font-size: 1rem; line-height: 1.4;">${framework.successNarrative}</div>
+                    <div style="font-size: 0.85rem; margin-top: 1.2rem; opacity: 0.9;">✨ Check <strong>${escapeHtml(email)}</strong> for your affiliate blueprint.</div>
+                    <div style="font-size: 0.75rem; margin-top: 1rem;">⚡ High-ticket commissions start within 24h.</div>
+                `;
+            });
+        }
+    }
+    
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    function init() {
+        currentFramework = getRandomFramework();
+        renderPage(currentFramework);
+        console.log(`🔥 Affiliate Framework #${currentFramework.id} | ${currentFramework.headline}`);
+    }
+    
+    window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
 <!DOCTYPE html> 
 <html lang="de">
 <head>
