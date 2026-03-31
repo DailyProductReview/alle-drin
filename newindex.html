@@ -1,261 +1,38 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High-Ticket Affiliates: Real Buyers</title>
+    <title>Landingpage</title>
     <style>
-        * {
+        /* Vollbild Hintergrund */
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #0B1120;
-            padding: 1.5rem;
-        }
-        
-        .container {
-            max-width: 520px;
-            width: 100%;
-            background: #111827;
-            border: 1px solid #1F2937;
-            border-radius: 32px;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.8);
-            position: relative;
             overflow: hidden;
         }
-        
-        /* Premium accent line */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #F59E0B, #FBBF24, #F59E0B);
-        }
-        
-        h1 {
-            font-size: 2.4rem;
-            line-height: 1.2;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: white;
-            margin-bottom: 1rem;
-            text-align: left;
-        }
-        
-        .headline-main {
-            color: #F3F4F6;
-            display: block;
-        }
-        
-        .headline-highlight {
-            color: #FBBF24;
-            display: block;
-            border-bottom: 2px solid rgba(251, 191, 36, 0.3);
-            padding-bottom: 0.25rem;
-            margin-bottom: 0.25rem;
-        }
-        
-        .headline-sub {
-            color: #9CA3AF;
-            font-weight: 400;
-            font-size: 1.3rem;
-            display: block;
-            margin-top: 0.25rem;
-        }
-        
-        .badge-container {
-            display: flex;
-            gap: 0.75rem;
-            margin: 1.5rem 0 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .badge {
-            background: #1F2937;
-            border: 1px solid #374151;
-            border-radius: 100px;
-            padding: 0.4rem 1rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #D1D5DB;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-        }
-        
-        .badge-premium {
-            background: rgba(251, 191, 36, 0.1);
-            border-color: #FBBF24;
-            color: #FBBF24;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .email-label {
-            display: block;
-            color: #9CA3AF;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.3px;
-        }
-        
-        .email-field {
-            width: 100%;
-            background: #1F2937;
-            border: 1px solid #374151;
-            border-radius: 16px;
-            padding: 1.1rem 1.25rem;
-            font-size: 1rem;
-            color: white;
-            transition: all 0.2s ease;
-        }
-        
-        .email-field:focus {
-            outline: none;
-            border-color: #FBBF24;
-            background: #111827;
-            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
-        }
-        
-        .email-field::placeholder {
-            color: #4B5563;
-            font-size: 0.95rem;
-        }
-        
-        .button {
-            width: 100%;
-            background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
-            border: none;
-            border-radius: 16px;
-            padding: 1.2rem 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #0B1120;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-            box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .button:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
-            box-shadow: 0 20px 30px -8px rgba(251, 191, 36, 0.4);
-        }
-        
-        .button:active {
-            transform: translateY(0px);
-        }
-        
-        .guarantee-grid {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 1rem;
-            border-top: 1px solid #1F2937;
-        }
-        
-        .guarantee-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #9CA3AF;
-            font-size: 0.85rem;
-        }
-        
-        .check-icon {
-            color: #10B981;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        
-        .high-ticket-tag {
-            text-align: center;
-            margin-top: 1.25rem;
-            font-size: 0.8rem;
-            color: #6B7280;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        
-        .dot {
-            width: 4px;
-            height: 4px;
-            background: #FBBF24;
-            border-radius: 50%;
-            display: inline-block;
+
+        body {
+            background: url('https://imgallery.llsvr.com/sandyarta.69cb96fe277fe.gif') no-repeat center center fixed;
+            background-size: cover;
+            cursor: pointer; /* zeigt an, dass man klicken kann */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>
-            <span class="headline-main">Stop promoting to</span>
-            <span class="headline-highlight">window-shoppers.</span>
-            <span class="headline-sub">Get high-ticket buyers.</span>
-        </h1>
-        
-        <div class="badge-container">
-            <span class="badge badge-premium">⚡ HIGH-TICKET ONLY</span>
-            <span class="badge">VERIFIED BUYERS</span>
-            <span class="badge">30-DAY GUARANTEE</span>
-        </div>
-        
-        <form method="post" action="https://www.sendsteed.com/subscribe/">
-            <div class="form-group">
-                <label class="email-label" for="email">Business email</label>
-                <input class="email-field" type="text" id="email" name="e123432" required="" placeholder="you@affiliate.com">
-            </div>
-            
-            <!-- No name field - only email -->
-            
-            <input type="hidden" name="lllid" value="123432">
-            <input type="hidden" name="lluid" value="sandyarta">
-            <input type="hidden" name="redirect" value="">
-            <input type="hidden" name="source" value="gptaffiprog">
-            
-            <button class="button" type="submit">Get Verified Buyers Now →</button>
-        </form>
-        
-        <div class="guarantee-grid">
-            <div class="guarantee-item">
-                <span class="check-icon">✓</span>
-                <span>$1K+ order ready</span>
-            </div>
-            <div class="guarantee-item">
-                <span class="check-icon">✓</span>
-                <span>No bots</span>
-            </div>
-            <div class="guarantee-item">
-                <span class="check-icon">✓</span>
-                <span>Payment-verified</span>
-            </div>
-        </div>
-        
-        <div class="high-ticket-tag">
-            <span class="dot"></span>
-            <span>Exclusive for high-ticket affiliate offers</span>
-            <span class="dot"></span>
-        </div>
-    </div>
+
+<script>
+    // Event listener für Klicks auf die gesamte Seite
+    document.body.addEventListener('click', function() {
+        // Laden des Pop-up Scripts
+        var script = document.createElement('script');
+        script.id = 'llscript39478';
+        script.src = 'https://pjs.leadsleap.net/js.js?c=39478&u=sandyarta';
+        document.body.appendChild(script);
+    }, { once: true }); // once:true sorgt dafür, dass das Script nur einmal geladen wird
+</script>
+
 </body>
 </html>
