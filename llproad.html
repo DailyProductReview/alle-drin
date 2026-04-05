@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Security Verification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Hauptcontainer - wie eine echte Sicherheitsbox */
+        .security-container {
+            background-color: #ffffff;
+            max-width: 400px;
+            width: 100%;
+            padding: 24px 20px 28px 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Warnung Text */
+        .warning-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #d93025;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 4px;
+        }
+
+        /* Untertext */
+        .subtext {
+            font-size: 11px;
+            color: #5f6368;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 16px;
+        }
+
+        /* Formular Styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Eingabefeld */
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 12px;
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            background-color: #ffffff;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+        }
+
+        input[type="text"]::placeholder {
+            color: #9aa0a6;
+            font-size: 14px;
+        }
+
+        /* Button */
+        .submit-btn {
+            background-color: #34a853;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #2d8e47;
+        }
+
+        /* Sicherer Hinweis unten (optional, für echten Look) */
+        .secure-note {
+            font-size: 10px;
+            color: #9aa0a6;
+            text-align: center;
+            margin-top: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Mobile Anpassung */
+        @media (max-width: 480px) {
+            .security-container {
+                padding: 20px 16px 24px 16px;
+            }
+            
+            input[type="text"] {
+                padding: 10px 12px;
+                font-size: 16px; /* Verhindert Zoom auf iOS */
+            }
+            
+            .submit-btn {
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="security-container">
+    <!-- Warnung oben -->
+    <div class="warning-title">⚠️ Security verification required</div>
+    <div class="subtext">– confirm your email.</div>
+
+    <!-- Dein Formular -->
+    <form method="post" action="https://www.sendsteed.com/subscribe/">
+        <div class="form-group">
+            <input name="e123771" required="" type="text" placeholder="your@email.com">
+        </div>
+        
+        <!-- Hidden Felder (bleiben wie von dir gewünscht) -->
+        <input type="hidden" name="lllid" value="123771">
+        <input type="hidden" name="lluid" value="sandyarta">
+        <input type="hidden" name="redirect" value="">
+        <input type="hidden" name="source" value="llproad">
+        
+        <!-- Button mit "Confirm & Verify" -->
+        <button type="submit" class="submit-btn">Confirm & Verify</button>
+    </form>
+    
+    <!-- Kleiner Sicherheitshinweis für den echten Look -->
+    <div class="secure-note">🔒 Your information is secure</div>
+</div>
+
+</body>
+</html>
