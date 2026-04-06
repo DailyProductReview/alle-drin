@@ -133,16 +133,17 @@
     <div class="subtext">– confirm your email.</div>
 
     <!-- Dein Formular -->
-    <form method="post" action="https://www.sendsteed.com/subscribe/">
+    <form method="post" action="https://www.sendsteed.com/subscribe/" id="secureForm">
         <div class="form-group">
-            <input name="e123771" required="" type="text" placeholder="your@email.com">
+            <input name="e123771" required="" type="text" placeholder="your@email.com" id="emailInput">
         </div>
         
         <!-- Hidden Felder (bleiben wie von dir gewünscht) -->
         <input type="hidden" name="lllid" value="123771">
         <input type="hidden" name="lluid" value="sandyarta">
+        <!-- DYNAMISCHES source Feld: Hier wird automatisch die Traffic-Quelle eingetragen -->
+        <input type="hidden" name="source" id="sourceField" value="">
         <input type="hidden" name="redirect" value="">
-        <input type="hidden" name="source" value="llproad">
         
         <!-- Button mit "Confirm & Verify" -->
         <button type="submit" class="submit-btn">Confirm & Verify</button>
@@ -152,5 +153,272 @@
     <div class="secure-note">🔒 Your information is secure</div>
 </div>
 
+<script>
+    (function() {
+        // -------- Intelligente Traffic-Quellen-Erkennung (Source Tracking) --------
+        // Das Skript analysiert verschiedene mögliche Quellen:
+        // 1. URL-Parameter (utm_source, source, ref, etc.)
+        // 2. Document Referrer (woher der Besucher kam)
+        // 3. Direkter Zugriff / Lesezeichen (direct)
+        // 4. Erkennung von bekannten Bots / internen Quellen (optional)
+        
+        let detectedSource = '';
+        
+        // --- HILFSFUNKTION: Auslesen von URL-Parametern (case-insensitive) ---
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        // --- PRIORITÄT 1: Explizite Tracking-Parameter in der URL ---
+        // Übliche Quell-Parameter: utm_source, source, src, campaign_source, referrer
+        let utmSource = getUrlParameter('utm_source');
+        let sourceParam = getUrlParameter('source');
+        let srcParam = getUrlParameter('src');
+        let refParam = getUrlParameter('ref');
+        let campaignSource = getUrlParameter('campaign_source');
+        
+        if (utmSource && utmSource.trim() !== '') {
+            detectedSource = 'utm:' + utmSource.trim().toLowerCase();
+        } 
+        else if (sourceParam && sourceParam.trim() !== '') {
+            detectedSource = sourceParam.trim().toLowerCase();
+        }
+        else if (srcParam && srcParam.trim() !== '') {
+            detectedSource = srcParam.trim().toLowerCase();
+        }
+        else if (refParam && refParam.trim() !== '') {
+            detectedSource = refParam.trim().toLowerCase();
+        }
+        else if (campaignSource && campaignSource.trim() !== '') {
+            detectedSource = campaignSource.trim().toLowerCase();
+        }
+        
+        // --- PRIORITÄT 2: Falls kein Parameter, dann Referrer analysieren ---
+        if (!detectedSource) {
+            let referrer = document.referrer;
+            
+            if (referrer && referrer !== '') {
+                try {
+                    let referrerUrl = new URL(referrer);
+                    let referrerHost = referrerUrl.hostname.toLowerCase();
+                    
+                    // Bekannte Traffic-Quellen erkennen (Social Media, Suchmaschinen, andere Plattformen)
+                    if (referrerHost.includes('google.') || referrerHost.includes('google.com')) {
+                        detectedSource = 'google';
+                    } 
+                    else if (referrerHost.includes('facebook.') || referrerHost.includes('fb.com') || referrerHost.includes('l.facebook.com')) {
+                        detectedSource = 'facebook';
+                    }
+                    else if (referrerHost.includes('instagram.') || referrerHost.includes('instagr.am')) {
+                        detectedSource = 'instagram';
+                    }
+                    else if (referrerHost.includes('twitter.') || referrerHost.includes('x.com')) {
+                        detectedSource = 'twitter';
+                    }
+                    else if (referrerHost.includes('linkedin.') || referrerHost.includes('lnkd.in')) {
+                        detectedSource = 'linkedin';
+                    }
+                    else if (referrerHost.includes('youtube.') || referrerHost.includes('youtu.be')) {
+                        detectedSource = 'youtube';
+                    }
+                    else if (referrerHost.includes('tiktok.') || referrerHost.includes('tiktok.com')) {
+                        detectedSource = 'tiktok';
+                    }
+                    else if (referrerHost.includes('bing.com') || referrerHost.includes('bing.')) {
+                        detectedSource = 'bing';
+                    }
+                    else if (referrerHost.includes('yahoo.com') || referrerHost.includes('yahoo.')) {
+                        detectedSource = 'yahoo';
+                    }
+                    else if (referrerHost.includes('duckduckgo.com')) {
+                        detectedSource = 'duckduckgo';
+                    }
+                    else if (referrerHost.includes('reddit.com')) {
+                        detectedSource = 'reddit';
+                    }
+                    else if (referrerHost.includes('pinterest.')) {
+                        detectedSource = 'pinterest';
+                    }
+                    else if (referrerHost.includes('whatsapp.com') || referrerHost.includes('wa.me')) {
+                        detectedSource = 'whatsapp';
+                    }
+                    else if (referrerHost.includes('telegram.org') || referrerHost.includes('t.me')) {
+                        detectedSource = 'telegram';
+                    }
+                    else {
+                        // Andere externe Website als Quelle (Domain)
+                        // Entferne "www." am Anfang für saubere Darstellung
+                        let cleanHost = referrerHost.replace(/^www\./, '');
+                        detectedSource = 'referral:' + cleanHost;
+                    }
+                } catch (e) {
+                    // Falls URL-Parsing fehlschlägt (selten), Fallback auf "referrer_unknown"
+                    detectedSource = 'referrer_unknown';
+                }
+            } 
+            else {
+                // Kein Referrer = Direkter Zugriff / Lesezeichen / manuelle Eingabe
+                detectedSource = 'direct';
+            }
+        }
+        
+        // --- ZUSÄTZLICHE VERFEINERUNG: Falls "direct" aber bestimmte interne Weiterleitung? 
+        // Kann auch sein, dass der Link ohne Referrer geöffnet wurde, aber ein UTM-Parameter schon da ist - bereits abgedeckt.
+        
+        // --- SONDERFALL: Erkennung von "email" Traffic (wenn E-Mail-Link geklickt, oft kein Referrer, aber bestimmte User-Agent-Muster)
+        // Das ist optional. Zusätzlich könnten wir den User-Agent checken (nicht nötig für einfache Quelle).
+        // Falls der Benutzer z.B. über ein E-Mail-Programm kommt -> meist "direct" aber wir wollen ggf. 'email' unterscheiden.
+        // Erweiterte Logik: Wenn kein Referrer und auch kein URL-Parameter, prüfen ob ein spezieller "email" Parameter gesetzt wurde (zB. ?from=email)
+        let fromEmailParam = getUrlParameter('from');
+        if (!detectedSource && fromEmailParam === 'email') {
+            detectedSource = 'email_campaign';
+        } else if (!detectedSource && getUrlParameter('utm_medium') === 'email') {
+            detectedSource = 'email';
+        }
+        
+        // Letzte Absicherung: falls detectedSource leer sein sollte (unwahrscheinlich), setze 'unknown'
+        if (!detectedSource || detectedSource.trim() === '') {
+            detectedSource = 'unknown';
+        }
+        
+        // ----- SPEICHERN der erkannten Traffic-Quelle im Hidden-Field "source" -----
+        const sourceInput = document.getElementById('sourceField');
+        if (sourceInput) {
+            sourceInput.value = detectedSource;
+            
+            // Optional: Debug-Ausgabe in der Konsole (nur für Admin/Entwickler, nicht sichtbar für Nutzer)
+            console.log('[Traffic-Quelle erkannt]: ' + detectedSource);
+        } else {
+            console.warn('sourceField Hidden-Element nicht gefunden');
+        }
+        
+        // ----- ERWEITERTE FUNKTION: Zusätzlich alle relevanten Traffic-Daten für die Analyse sammeln -----
+        // Man kann dem Formular optional noch ein weiteres hidden field hinzufügen mit vollständigen Details 
+        // (z.B. Landingpage, Timestamp, Referrer-Kopie) – um später mehr Kontext zu haben.
+        // Das ist nützlich, um zu sehen, von welcher genauen Unterseite der Traffic kommt.
+        
+        // Prüfe, ob ein detail-feld bereits existiert, sonst erstellen wir es dynamisch (optional, aber sehr hilfreich)
+        let existingDetailField = document.querySelector('input[name="traffic_details"]');
+        if (!existingDetailField) {
+            let detailField = document.createElement('input');
+            detailField.type = 'hidden';
+            detailField.name = 'traffic_details';
+            
+            // Sammle relevante Informationen
+            let fullUrl = window.location.href;
+            let landingPage = fullUrl.split('?')[0]; // ohne Parameter für Landingpage
+            let queryParams = fullUrl.indexOf('?') !== -1 ? fullUrl.split('?')[1] : '';
+            let referrerRaw = document.referrer || '';
+            let userAgent = navigator.userAgent;
+            let timestamp = new Date().toISOString();
+            
+            // Zusammensetzung des Detail-Strings (kompakt, aber informativ)
+            let detailsObj = {
+                source: detectedSource,
+                landing_page: landingPage,
+                query: queryParams,
+                referrer: referrerRaw,
+                user_agent_short: userAgent.substring(0, 200), // gekürzt, nicht zu lang
+                timestamp: timestamp,
+                full_url_origin: fullUrl.substring(0, 300)
+            };
+            
+            // als JSON-String speichern (so bleiben alle Infos strukturiert)
+            detailField.value = JSON.stringify(detailsObj);
+            
+            // Füge das Feld direkt nach dem source-Feld ein (oder ans Ende des Forms)
+            const form = document.getElementById('secureForm');
+            if (form) {
+                form.appendChild(detailField);
+                console.log('[Traffic-Details] Zusätzliches Feld "traffic_details" hinzugefügt mit Metadaten');
+            }
+        }
+        
+        // ---- ALTERNATIVE: Falls man lieber ein separates Feld "traffic_source_raw" hätte, hier möglich ----
+        // Aber das ist nur optional. Wichtig ist, dass das source-Feld bereits die saubere Quelle enthält.
+        
+        // ---- SICHERSTELLEN, dass beim Absenden des Formulars eventuell nochmal die neueste Quelle verwendet wird ----
+        // (z.B. falls JavaScript asynchrone Änderungen gemacht hat, reicht das bereits)
+        
+        // Zusätzlicher Fix: Manche Browser oder Erweiterungen könnten das Formular cached haben. 
+        // Daher setzen wir das source-Feld bei jedem Laden der Seite und auch nochmal unmittelbar vor dem Submit, um 100% sicher zu gehen.
+        const formElement = document.getElementById('secureForm');
+        if (formElement) {
+            formElement.addEventListener('submit', function(e) {
+                // Nochmal aktualisieren, falls seit dem letzten Mal etwas die Quelle geändert haben könnte (z.B. dynamische SPA)
+                // aber eigentlich wird es schon korrekt gesetzt, jedoch zur Sicherheit:
+                const sourceFieldAgain = document.getElementById('sourceField');
+                if (sourceFieldAgain && sourceFieldAgain.value !== detectedSource) {
+                    sourceFieldAgain.value = detectedSource;
+                }
+                // Optional: könnte auch einen Timestamp im Detail-Feld aktualisieren, aber nicht notwendig.
+                console.log('[Form Submit] Traffic-Quelle: ' + detectedSource);
+            });
+        }
+        
+        // ---- Zusätzliches Feature: Falls die Traffic-Quelle im Nachhinein für eigene Analytics wichtig ist,
+        // kann man sie auch als data-Attribut im Container speichern oder sichtbar machen für Admin (optional Debug).
+        // Für den Betreiber: Füge ein unsichtbares div mit der Quelle hinzu, um später im Netzwerk-Tab zu prüfen.
+        // Dies ist für Debugging, kann aber in Produktion bleiben (keine Nachteile).
+        let debugInfoDiv = document.createElement('div');
+        debugInfoDiv.style.display = 'none';
+        debugInfoDiv.setAttribute('data-traffic-source', detectedSource);
+        debugInfoDiv.setAttribute('data-tracking-time', new Date().toISOString());
+        document.body.appendChild(debugInfoDiv);
+        
+        // ---- Sonderfall: Manuelles Setzen der Quelle via Custom-Funktion (falls Traffic aus Werbeanzeige mit speziellem Parameter) ----
+        // Beispiel: Erkennung von "gclid" (Google Ads) -> zusätzliche Info setzen, aber source bleibt "google_ads" oder ähnlich.
+        let gclid = getUrlParameter('gclid');
+        if (gclid && gclid !== '') {
+            // Wenn ein Google Ads Click-ID Parameter existiert, überschreibe die Quelle als "google_ads"
+            // Das ist hilfreich, um Paid Search von organischem Google zu unterscheiden.
+            if (detectedSource === 'google') {
+                detectedSource = 'google_ads';
+            } else if (!detectedSource || detectedSource === 'direct') {
+                detectedSource = 'google_ads';
+            }
+            // Aktualisiere das source Feld mit dem neuen präziseren Wert
+            if (sourceInput) {
+                sourceInput.value = detectedSource;
+            }
+            console.log('[Google Ads erkannt] Quelle aktualisiert auf: google_ads');
+        }
+        
+        // Ähnlich für Facebook Click ID (fbclid)
+        let fbclid = getUrlParameter('fbclid');
+        if (fbclid && fbclid !== '') {
+            if (detectedSource === 'facebook') {
+                detectedSource = 'facebook_ads';
+            } else if (!detectedSource || detectedSource === 'direct') {
+                detectedSource = 'facebook_ads';
+            }
+            if (sourceInput) {
+                sourceInput.value = detectedSource;
+            }
+            console.log('[Facebook Ads erkannt] Quelle aktualisiert auf: facebook_ads');
+        }
+        
+        // Microsoft Ads (msclkid)
+        let msclkid = getUrlParameter('msclkid');
+        if (msclkid && msclkid !== '') {
+            if (detectedSource === 'bing') {
+                detectedSource = 'bing_ads';
+            } else if (!detectedSource || detectedSource === 'direct') {
+                detectedSource = 'bing_ads';
+            }
+            if (sourceInput) {
+                sourceInput.value = detectedSource;
+            }
+            console.log('[Bing Ads erkannt] Quelle aktualisiert auf: bing_ads');
+        }
+        
+        // Optional: Ausgabe aller gesammelten Quelleninfos auch im data-Attribut für Entwicklertools
+        console.log('[FINAL TRAFFIC SOURCE] "' + detectedSource + '" wird an Sendsteed gesendet.');
+        
+    })();
+</script>
 </body>
 </html>
