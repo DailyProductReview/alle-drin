@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Income Proofs MLGS Actually Works | Real Video Results</title>
+  <!-- Google Fonts + Clean Reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0f1e 0%, #0c1222 100%);
+      color: #eef2ff;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --accent: #f5b042;
+      --accent-glow: #f5b042cc;
+      --card-bg: rgba(18, 25, 45, 0.75);
+      --border-glow: rgba(245, 176, 66, 0.3);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* header / hero area */
+    .hero {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 1rem 0 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(245, 176, 66, 0.15);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(245, 176, 66, 0.4);
+      border-radius: 100px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #f5b042;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, #ffffff, #f5b042, #ffdd99);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subhead {
+      font-size: 1.25rem;
+      color: #b9c7e6;
+      max-width: 680px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    .highlight {
+      color: #f5b042;
+      font-weight: 600;
+    }
+
+    /* VIDEO SECTION — stacked vertical layout, extra large */
+    .video-stack {
+      margin: 2.5rem 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .video-block {
+      width: 100%;
+      max-width: 980px;
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      padding: 1rem;
+    }
+
+    .video-block:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+      box-shadow: 0 28px 36px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(245, 176, 66, 0.2);
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      display: block;
+      border: none;
+    }
+
+    /* BUTTON directly under each video - clean but persuasive */
+    .video-btn-wrapper {
+      margin-top: 1.2rem;
+      padding: 0 0.25rem 0.2rem 0.25rem;
+      text-align: center;
+    }
+
+    .video-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(105deg, #f5b042 0%, #ffcd7e 100%);
+      color: #0a0f1e;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 0.85rem 2.2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: all 0.2s ease;
+      box-shadow: 0 6px 14px rgba(245, 176, 66, 0.3);
+      border: none;
+      cursor: pointer;
+      width: auto;
+      min-width: 260px;
+      backdrop-filter: blur(2px);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .video-cta-btn:hover {
+      transform: scale(1.02);
+      background: linear-gradient(105deg, #f5b042, #ffdd99);
+      box-shadow: 0 10px 20px rgba(245, 176, 66, 0.5);
+      color: #000000;
+    }
+
+    .video-cta-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* optional small arrow / emoji inside button */
+    .video-cta-btn span {
+      font-size: 1.2rem;
+    }
+
+    /* CTA area (main bottom) */
+    .cta-container {
+      text-align: center;
+      margin: 3rem 0 2rem;
+      padding: 2.5rem 1.5rem;
+      background: radial-gradient(ellipse at 50% 50%, rgba(245, 176, 66, 0.08), transparent);
+      border-radius: 3rem;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-desc {
+      font-size: 1.1rem;
+      color: #cbd5f0;
+      max-width: 550px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .btn-main {
+      display: inline-block;
+      background: linear-gradient(95deg, #f5b042 0%, #ffcd7e 100%);
+      color: #0e0f1c;
+      font-weight: 800;
+      font-size: 1.3rem;
+      padding: 1rem 2.8rem;
+      border-radius: 60px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 18px rgba(245, 176, 66, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-main:hover {
+      transform: scale(1.03);
+      background: linear-gradient(95deg, #f5b042, #ffdd99);
+      box-shadow: 0 12px 24px rgba(245, 176, 66, 0.5);
+      color: #0a0f1e;
+    }
+
+    .btn-main:active {
+      transform: scale(0.99);
+    }
+
+    /* trust signals */
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #8f9ec2;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 2.5rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .trust-icon {
+      font-size: 1.2rem;
+    }
+
+    /* optional small footer */
+    .tiny-footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.75rem;
+      color: #5f6f97;
+      border-top: 1px dashed rgba(255,255,255,0.05);
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 780px) {
+      .container {
+        padding: 1.5rem 1rem;
+      }
+      h1 {
+        font-size: 2.4rem;
+      }
+      .cta-title {
+        font-size: 1.7rem;
+      }
+      .btn-main {
+        font-size: 1.1rem;
+        padding: 0.85rem 2rem;
+      }
+      .video-block {
+        padding: 0.7rem;
+      }
+      .video-stack {
+        gap: 1.8rem;
+      }
+      .video-cta-btn {
+        font-size: 1rem;
+        padding: 0.7rem 1.6rem;
+        min-width: 220px;
+      }
+    }
+
+    /* remove any extra youtube overlays? fine, but buttons visible */
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: #0a0f1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f5b042;
+      border-radius: 10px;
+    }
+
+    /* Vimeo specific: ensure iframe fills container properly */
+    .video-wrapper iframe[src*="vimeo"] {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- Hero / Headline with income proof angle (clean) - UPDATED TITLE -->
+  <div class="hero">
+    <div class="badge">🔥 LIVE PROOF • REAL INCOME RESULTS 🔥</div>
+    <h1>Income Proofs <span style="color:#f5b042;">MLGS Actually Works</span></h1>
+    <p class="subhead">
+      See real earnings, real strategies — no fluff. Watch the evidence and decide for yourself.  
+      <span class="highlight">Thousands are already scaling with MLGS.</span>
+    </p>
+  </div>
+
+  <!-- VERTICAL VIDEO SECTION - Large, stacked, EACH video gets a dedicated action button directly underneath -->
+  <!-- ALL buttons use the provided affiliate link: https://www.myleadgensecret.com/sizzle/?rid=28382&src=videos -->
+  <div class="video-stack">
+    <!-- Video 1 - VIMEO (autoplay muted loop enabled as in original iframe attributes) -->
+    <div class="video-block">
+      <div class="video-wrapper">
+        <iframe 
+          title="vimeo-player" 
+          src="https://player.vimeo.com/video/852137203?h=e17b8ed5c5&autoplay=1&muted=1&loop=1&autopause=0" 
+          width="100%" 
+          height="100%" 
+          frameborder="0" 
+          allowfullscreen 
+          allow="autoplay; fullscreen">
+        </iframe>
+      </div>
+      <!-- ACTION BUTTON directly under video #1 with MLGS affiliate link -->
+      <div class="video-btn-wrapper">
+        <a href="https://www.myleadgensecret.com/sizzle/?rid=28382&src=videos" class="video-cta-btn" target="_blank" rel="noopener noreferrer">
+          <span>⚡</span> GET THIS MLGS PROOF <span>➡️</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Video 2 - YOUTUBE (second video) -->
+    <div class="video-block">
+      <div class="video-wrapper">
+        <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/YPkhOH2ePYQ?si=IipiwltMAA7vOTrv" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <!-- BUTTON right under video #2 -->
+      <div class="video-btn-wrapper">
+        <a href="https://www.myleadgensecret.com/sizzle/?rid=28382&src=videos" class="video-cta-btn" target="_blank" rel="noopener noreferrer">
+          <span>💸</span> CLAIM YOUR MLGS ACCESS <span>🔥</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Video 3 - YOUTUBE (third video) -->
+    <div class="video-block">
+      <div class="video-wrapper">
+        <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/A5Famu1Pacw?si=FDGHxTbeLNRIrrZL" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <!-- BUTTON after third video with same affiliate link -->
+      <div class="video-btn-wrapper">
+        <a href="https://www.myleadgensecret.com/sizzle/?rid=28382&src=videos" class="video-cta-btn" target="_blank" rel="noopener noreferrer">
+          <span>🎯</span> UNLOCK THE MLGS SYSTEM <span>✅</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persuasive main CTA Section with the same affiliate link -->
+  <div class="cta-container">
+    <div class="cta-title">💎 Ready to claim your MLGS income proof?</div>
+    <div class="cta-desc">
+      No gimmicks. The same My Lead Gen Secret system that created these results is now available.  
+      <strong>Stop watching — start earning with MLGS.</strong>
+    </div>
+    <a href="https://www.myleadgensecret.com/sizzle/?rid=28382&src=videos" class="btn-main" target="_blank" rel="noopener noreferrer">
+      🔥 ACCESS MLGS SYSTEM NOW 🔥
+    </a>
+    <div style="margin-top: 1.2rem; font-size: 0.8rem; opacity: 0.7;">
+      ✅ Limited slots • Instant access • Risk-free start
+    </div>
+  </div>
+
+  <!-- additional trust elements (keeps social proof) -->
+  <div class="trust-row">
+    <div class="trust-item">
+      <span class="trust-icon">⭐</span> 4.98/5 from 2,400+ verified MLGS members
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🔒</span> SSL Secure checkout
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🎬</span> Real video proofs + buttons below
+    </div>
+  </div>
+
+  <!-- small footer note -->
+  <div class="tiny-footer">
+    © 2025 Income Proofs MLGS Actually Works — Real results shown in unedited walkthroughs. Individual outcomes may vary, but MLGS strategy is proven. Click any button to see how My Lead Gen Secret transforms your income.
+  </div>
+</div>
+
+</body>
+</html>
