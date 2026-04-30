@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Income Proof That Works | Real Results</title>
-  <!-- Google Fonts & simple CSS reset -->
+  <title>Income Proof That Works | Real Video Results</title>
+  <!-- Google Fonts + Clean Reset -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -22,7 +21,6 @@
       scroll-behavior: smooth;
     }
 
-    /* glowing accent color */
     :root {
       --accent: #f5b042;
       --accent-glow: #f5b042cc;
@@ -31,7 +29,7 @@
     }
 
     .container {
-      max-width: 1280px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 2rem 1.5rem 4rem;
     }
@@ -39,8 +37,8 @@
     /* header / hero area */
     .hero {
       text-align: center;
-      margin-bottom: 3rem;
-      padding: 1rem 0 1.5rem;
+      margin-bottom: 2rem;
+      padding: 1rem 0 1rem;
     }
 
     .badge {
@@ -59,7 +57,7 @@
     }
 
     h1 {
-      font-size: 3.2rem;
+      font-size: 3.5rem;
       font-weight: 800;
       background: linear-gradient(120deg, #ffffff, #f5b042, #ffdd99);
       background-clip: text;
@@ -82,50 +80,32 @@
       font-weight: 600;
     }
 
-    /* video grid section */
-    .proof-section {
-      margin: 3.5rem 0 3rem;
+    /* VIDEO SECTION — stacked vertical layout, extra large */
+    .video-stack {
+      margin: 2.5rem 0 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      align-items: center;
     }
 
-    .section-title {
-      font-size: 1.9rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .section-sub {
-      text-align: center;
-      color: #9aa9c7;
-      margin-bottom: 2.5rem;
-      font-size: 1.05rem;
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      justify-items: center;
-      align-items: start;
-    }
-
-    .video-card {
+    .video-block {
+      width: 100%;
+      max-width: 980px;
       background: var(--card-bg);
       backdrop-filter: blur(8px);
       border-radius: 2rem;
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
       transition: all 0.3s ease;
-      width: 100%;
-      max-width: 560px;
       overflow: hidden;
-      padding: 1.2rem 1.2rem 1.5rem;
+      padding: 1rem;
     }
 
-    .video-card:hover {
-      transform: translateY(-6px);
+    .video-block:hover {
+      transform: translateY(-4px);
       border-color: var(--border-glow);
-      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(245, 176, 66, 0.2);
+      box-shadow: 0 28px 36px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(245, 176, 66, 0.2);
     }
 
     .video-wrapper {
@@ -134,7 +114,7 @@
       border-radius: 1.2rem;
       overflow: hidden;
       background: #000;
-      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     .video-wrapper iframe {
@@ -145,41 +125,15 @@
       border: none;
     }
 
-    .video-caption {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-top: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #f0f3fa;
-    }
-
-    .check-icon {
-      color: #2ecc71;
-      font-weight: bold;
-      background: rgba(46, 204, 113, 0.2);
-      width: 24px;
-      height: 24px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-size: 0.8rem;
-    }
-
-    .video-stats {
-      font-size: 0.85rem;
-      color: #a3b3db;
-      margin-top: 6px;
-      display: flex;
-      gap: 1rem;
+    /* Remove all captions, stats, extra texts — clean */
+    .no-text {
+      display: none;
     }
 
     /* CTA area */
     .cta-container {
       text-align: center;
-      margin: 4rem 0 2rem;
+      margin: 3rem 0 2rem;
       padding: 2.5rem 1.5rem;
       background: radial-gradient(ellipse at 50% 50%, rgba(245, 176, 66, 0.08), transparent);
       border-radius: 3rem;
@@ -248,15 +202,22 @@
       font-size: 1.2rem;
     }
 
-    @media (max-width: 680px) {
+    /* optional small footer */
+    .tiny-footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.75rem;
+      color: #5f6f97;
+      border-top: 1px dashed rgba(255,255,255,0.05);
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 780px) {
       .container {
         padding: 1.5rem 1rem;
       }
       h1 {
-        font-size: 2.2rem;
-      }
-      .section-title {
-        font-size: 1.6rem;
+        font-size: 2.4rem;
       }
       .cta-title {
         font-size: 1.7rem;
@@ -265,12 +226,15 @@
         font-size: 1.1rem;
         padding: 0.85rem 2rem;
       }
-      .video-card {
-        padding: 0.9rem;
+      .video-block {
+        padding: 0.7rem;
+      }
+      .video-stack {
+        gap: 1.8rem;
       }
     }
 
-    /* custom scroll */
+    /* remove any default youtube related overlays? cannot fully, but embedded play nice */
     ::-webkit-scrollbar {
       width: 8px;
       background: #0a0f1a;
@@ -279,13 +243,15 @@
       background: #f5b042;
       border-radius: 10px;
     }
+
+    /* hide any extra potential "watch on youtube" badge? not needed, just standard iframe */
   </style>
 </head>
 <body>
 
 <div class="container">
   
-  <!-- Hero / Headline with convincing income proof angle -->
+  <!-- Hero / Headline with income proof angle (clean) -->
   <div class="hero">
     <div class="badge">🔥 LIVE PROOF • REAL INCOME RESULTS 🔥</div>
     <h1>Income Proof That <span style="color:#f5b042;">Actually Works</span></h1>
@@ -295,52 +261,27 @@
     </p>
   </div>
 
-  <!-- VIDEO PROOF SECTION (3 videos) -->
-  <div class="proof-section">
-    <div class="section-title">📹 Unstoppable Results — Watch & Believe</div>
-    <div class="section-sub">Every video shows real traffic-to-income mechanics. No scripts, just proof.</div>
-
-    <div class="video-grid">
-      <!-- Video 1: exact embed from request -->
-      <div class="video-card">
-        <div class="video-wrapper">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/KPHXueSqC_Y?si=-nG04fJrwOPoOWhF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="video-caption">
-          <span class="check-icon">✓</span> Case study: 10k in 14 days
-        </div>
-        <div class="video-stats">
-          <span>📊 87% success replication</span>
-          <span>💰 $5k avg profit</span>
-        </div>
+  <!-- VERTICAL VIDEO SECTION - Large, stacked, NO text under videos, removed section titles / subtitles -->
+  <div class="video-stack">
+    <!-- Video 1 - exact embed, full width, no caption / no stats / no extra text -->
+    <div class="video-block">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/KPHXueSqC_Y?si=-nG04fJrwOPoOWhF&rel=0&modestbranding=1&showinfo=0&controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
+      <!-- absolutely no text below -->
+    </div>
 
-      <!-- Video 2: exact embed from request -->
-      <div class="video-card">
-        <div class="video-wrapper">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/zCeKhROFW3g?si=WutFWWee48C79UTM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="video-caption">
-          <span class="check-icon">✓</span> Automated income blueprint
-        </div>
-        <div class="video-stats">
-          <span>⚡ 30% conversion lift</span>
-          <span>📈 2.3x ROI</span>
-        </div>
+    <!-- Video 2 - vertical second, large, clean -->
+    <div class="video-block">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/zCeKhROFW3g?si=WutFWWee48C79UTM&rel=0&modestbranding=1&showinfo=0&controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
+    </div>
 
-      <!-- Video 3: exact embed from request -->
-      <div class="video-card">
-        <div class="video-wrapper">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/vK0Al-Xes48?si=UZ8w8I9X5uPLFXsF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="video-caption">
-          <span class="check-icon">✓</span> Secret traffic system EXPOSED
-        </div>
-        <div class="video-stats">
-          <span>🚀 6-figure case</span>
-          <span>🎯 exact method inside</span>
-        </div>
+    <!-- Video 3 - vertical third, massive & clear -->
+    <div class="video-block">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/vK0Al-Xes48?si=UZ8w8I9X5uPLFXsF&rel=0&modestbranding=1&showinfo=0&controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
   </div>
@@ -352,7 +293,6 @@
       No gimmicks. The same system that created these results is now available.  
       <strong>Stop watching — start earning.</strong>
     </div>
-    <!-- Button opens the exact link in a new tab (secure & working) -->
     <a href="https://www.twiceconfirmedtraffic.com/index.php?id=10214" class="btn" target="_blank" rel="noopener noreferrer">
       🔥 ACCESS INCOME SYSTEM NOW 🔥
     </a>
@@ -361,7 +301,7 @@
     </div>
   </div>
 
-  <!-- additional trust / social proof (keeps it convincing) -->
+  <!-- additional trust elements (keeps social proof) -->
   <div class="trust-row">
     <div class="trust-item">
       <span class="trust-icon">⭐</span> 4.98/5 from 2,400+ verified members
@@ -370,17 +310,15 @@
       <span class="trust-icon">🔒</span> SSL Secure checkout
     </div>
     <div class="trust-item">
-      <span class="trust-icon">🎬</span> Real video testimonials above
+      <span class="trust-icon">🎬</span> Real video proofs above
     </div>
   </div>
 
-  <!-- small footer note (just for credibility) -->
-  <div style="text-align: center; margin-top: 3rem; font-size: 0.75rem; color: #5f6f97; border-top: 1px dashed rgba(255,255,255,0.05); padding-top: 2rem;">
+  <!-- small footer note -->
+  <div class="tiny-footer">
     © 2025 Income Proof That Works — Real results shown in unedited walkthroughs. Individual outcomes may vary, but strategy is proven.
   </div>
 </div>
 
-<!-- subtle javascript? not needed but ensures any external click tracking not intrusive, but we respect the user's direct link -->
-<!-- The page is fully responsive, shows videos, and the main CTA leads to the required URL -->
 </body>
 </html>
