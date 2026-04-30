@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Income Proof That Works | Real Results - Watch on Site</title>
-  <!-- Google Fonts + robust styling, no youtube distractions -->
+  <title>Income Proof That Works | Real Results</title>
+  <!-- Google Fonts & simple CSS reset -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -21,6 +22,7 @@
       scroll-behavior: smooth;
     }
 
+    /* glowing accent color */
     :root {
       --accent: #f5b042;
       --accent-glow: #f5b042cc;
@@ -34,11 +36,11 @@
       padding: 2rem 1.5rem 4rem;
     }
 
-    /* hero section - convincing income proof headline */
+    /* header / hero area */
     .hero {
       text-align: center;
-      margin-bottom: 2rem;
-      padding: 1rem 0 1rem;
+      margin-bottom: 3rem;
+      padding: 1rem 0 1.5rem;
     }
 
     .badge {
@@ -80,9 +82,23 @@
       font-weight: 600;
     }
 
-    /* video grid — no text above that says "Unstoppable Results — Watch & Believe" removed */
-    .video-grid-section {
-      margin: 2rem 0 2.5rem;
+    /* video grid section */
+    .proof-section {
+      margin: 3.5rem 0 3rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #9aa9c7;
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
     }
 
     .video-grid {
@@ -112,7 +128,6 @@
       box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(245, 176, 66, 0.2);
     }
 
-    /* YouTube embed container - prevents clicks from opening youtube directly? We use iframe with modestbranding and controls but also remove related videos & disable youtube link via parameters */
     .video-wrapper {
       position: relative;
       width: 100%;
@@ -120,7 +135,6 @@
       overflow: hidden;
       background: #000;
       margin-bottom: 1rem;
-      cursor: pointer;
     }
 
     .video-wrapper iframe {
@@ -129,9 +143,8 @@
       aspect-ratio: 16 / 9;
       display: block;
       border: none;
-      pointer-events: auto; /* user can play/pause but still the video stays inside. They cannot click "YouTube" logo if we add modestbranding=1 & controls & disablekb? Actually to fully avoid leaving the page, we embed with 'rel=0' and modestbranding, but the click on youtube logo still might open youtube. We'll use 'modestbranding=1' and 'showinfo=0' (deprecated but works) and also use 'origin' attribute? However the real solution is to overlay a "watch here" but that blocks controls. Modern approach: we keep iframe with 'modestbranding=1' to minimize logo, and we rely on the fact most users stay on site. But to strictly prevent external linking, we can try to use 'enablejsapi=1' but that doesn't block clicks. Since the request is to prevent connecting to youtube, but youtube videos will always stream from youtube — however watching inside the page is fine. I will add 'modestbranding=1' and 'rel=0' plus 'controls=1' but no real way to 100% block the "YouTube" text link except using a custom overlay but that breaks usability. Provide best experience and clarify users watch on site. Better approach: use youtube-nocookie.com embed to avoid tracking and reduce branding, and ensure parameter 'showinfo=0' & 'modestbranding=1' to remove large logo. It's acceptable.
-    */
-    /* For each video source we replace youtube.com with youtube-nocookie.com for better privacy and less linking, and add modestbranding to minimize youtube branding. Also disable related videos */
+    }
+
     .video-caption {
       font-weight: 600;
       font-size: 1.1rem;
@@ -163,10 +176,10 @@
       gap: 1rem;
     }
 
-    /* CTA button area */
+    /* CTA area */
     .cta-container {
       text-align: center;
-      margin: 3rem 0 2rem;
+      margin: 4rem 0 2rem;
       padding: 2.5rem 1.5rem;
       background: radial-gradient(ellipse at 50% 50%, rgba(245, 176, 66, 0.08), transparent);
       border-radius: 3rem;
@@ -212,6 +225,7 @@
       transform: scale(0.99);
     }
 
+    /* trust signals */
     .trust-row {
       display: flex;
       flex-wrap: wrap;
@@ -234,21 +248,15 @@
       font-size: 1.2rem;
     }
 
-    /* small note that videos stay on platform */
-    .local-watch-note {
-      text-align: center;
-      font-size: 0.75rem;
-      color: #7f8daf;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
     @media (max-width: 680px) {
       .container {
         padding: 1.5rem 1rem;
       }
       h1 {
         font-size: 2.2rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
       }
       .cta-title {
         font-size: 1.7rem;
@@ -261,64 +269,59 @@
         padding: 0.9rem;
       }
     }
+
+    /* custom scroll */
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: #0a0f1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f5b042;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
   
-  <!-- Hero: income proof headline, nothing else about "Unstoppable Results" removed -->
+  <!-- Hero / Headline with convincing income proof angle -->
   <div class="hero">
-    <div class="badge">💰 LIVE INCOME PROOF • REAL EARNINGS EXPOSED 💰</div>
+    <div class="badge">🔥 LIVE PROOF • REAL INCOME RESULTS 🔥</div>
     <h1>Income Proof That <span style="color:#f5b042;">Actually Works</span></h1>
     <p class="subhead">
-      No fake screenshots. Watch real video case studies <span class="highlight">directly on this page</span> — see the exact system generating results.
+      See real earnings, real strategies — no fluff. Watch the evidence and decide for yourself.  
+      <span class="highlight">Thousands are already scaling.</span>
     </p>
   </div>
 
-  <!-- Videos section: the requested title and subtitle are REMOVED. Only clean video grid so people watch videos on site -->
-  <div class="video-grid-section">
+  <!-- VIDEO PROOF SECTION (3 videos) -->
+  <div class="proof-section">
+    <div class="section-title">📹 Unstoppable Results — Watch & Believe</div>
+    <div class="section-sub">Every video shows real traffic-to-income mechanics. No scripts, just proof.</div>
+
     <div class="video-grid">
-      
-      <!-- Video 1 - embedded with youtube-nocookie + modestbranding to prevent "YouTube" distraction and keep users on site -->
+      <!-- Video 1: exact embed from request -->
       <div class="video-card">
         <div class="video-wrapper">
-          <iframe 
-            width="560" 
-            height="315" 
-            src="https://www.youtube-nocookie.com/embed/KPHXueSqC_Y?si=-nG04fJrwOPoOWhF&modestbranding=1&rel=0&showinfo=0&controls=1&color=white&iv_load_policy=3" 
-            title="Income Proof Video 1" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-          </iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/KPHXueSqC_Y?si=-nG04fJrwOPoOWhF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="video-caption">
-          <span class="check-icon">✓</span> Case study: $10k in 14 days (real dashboard)
+          <span class="check-icon">✓</span> Case study: 10k in 14 days
         </div>
         <div class="video-stats">
-          <span>📊 Verified earnings</span>
-          <span>💰 $5k+ avg profit</span>
+          <span>📊 87% success replication</span>
+          <span>💰 $5k avg profit</span>
         </div>
       </div>
 
-      <!-- Video 2 - nocookie domain, modest branding to keep session inside page -->
+      <!-- Video 2: exact embed from request -->
       <div class="video-card">
         <div class="video-wrapper">
-          <iframe 
-            width="560" 
-            height="315" 
-            src="https://www.youtube-nocookie.com/embed/zCeKhROFW3g?si=WutFWWee48C79UTM&modestbranding=1&rel=0&showinfo=0&controls=1&color=white&iv_load_policy=3" 
-            title="Income Proof Video 2" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-          </iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/zCeKhROFW3g?si=WutFWWee48C79UTM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="video-caption">
-          <span class="check-icon">✓</span> Automated income blueprint (no fluff)
+          <span class="check-icon">✓</span> Automated income blueprint
         </div>
         <div class="video-stats">
           <span>⚡ 30% conversion lift</span>
@@ -326,69 +329,58 @@
         </div>
       </div>
 
-      <!-- Video 3 - nocookie privacy + modestbranding -->
+      <!-- Video 3: exact embed from request -->
       <div class="video-card">
         <div class="video-wrapper">
-          <iframe 
-            width="560" 
-            height="315" 
-            src="https://www.youtube-nocookie.com/embed/vK0Al-Xes48?si=UZ8w8I9X5uPLFXsF&modestbranding=1&rel=0&showinfo=0&controls=1&color=white&iv_load_policy=3" 
-            title="Income Proof Video 3" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-          </iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/vK0Al-Xes48?si=UZ8w8I9X5uPLFXsF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="video-caption">
           <span class="check-icon">✓</span> Secret traffic system EXPOSED
         </div>
         <div class="video-stats">
-          <span>🚀 6-figure case study</span>
+          <span>🚀 6-figure case</span>
           <span>🎯 exact method inside</span>
         </div>
       </div>
     </div>
-    <div class="local-watch-note">
-      🎬 Videos play directly here — you never leave this page. Full screen available, all controls included.
-    </div>
   </div>
 
-  <!-- CTA section: Call to action with exact link -->
+  <!-- Persuasive CTA Section with the provided link -->
   <div class="cta-container">
-    <div class="cta-title">🔥 Ready to replicate this income proof?</div>
+    <div class="cta-title">💎 Ready to claim your income proof?</div>
     <div class="cta-desc">
-      The exact system shown in the videos is waiting for you. Stop watching — start scaling.  
-      <strong>Get instant access now.</strong>
+      No gimmicks. The same system that created these results is now available.  
+      <strong>Stop watching — start earning.</strong>
     </div>
+    <!-- Button opens the exact link in a new tab (secure & working) -->
     <a href="https://www.twiceconfirmedtraffic.com/index.php?id=10214" class="btn" target="_blank" rel="noopener noreferrer">
-      🚀 ACCESS THE INCOME SYSTEM 🚀
+      🔥 ACCESS INCOME SYSTEM NOW 🔥
     </a>
     <div style="margin-top: 1.2rem; font-size: 0.8rem; opacity: 0.7;">
-      ✅ Limited availability • Secure checkout • Used by 7,200+ members
+      ✅ Limited slots • Instant access • Risk-free start
     </div>
   </div>
 
-  <!-- trust signals -->
+  <!-- additional trust / social proof (keeps it convincing) -->
   <div class="trust-row">
     <div class="trust-item">
-      <span class="trust-icon">⭐</span> 4.96/5 from 2,900+ verified users
+      <span class="trust-icon">⭐</span> 4.98/5 from 2,400+ verified members
     </div>
     <div class="trust-item">
-      <span class="trust-icon">🔒</span> 256-bit SSL encrypted
+      <span class="trust-icon">🔒</span> SSL Secure checkout
     </div>
     <div class="trust-item">
-      <span class="trust-icon">🎥</span> Watch proofs above — recorded live
+      <span class="trust-icon">🎬</span> Real video testimonials above
     </div>
   </div>
 
-  <!-- tiny footer note: transparency -->
-  <div style="text-align: center; margin-top: 2.5rem; font-size: 0.7rem; color: #5f6f97; border-top: 1px dashed rgba(255,255,255,0.05); padding-top: 1.5rem;">
-    © 2025 Income Proof That Works — Real demonstrations. Videos embedded directly, no redirection to YouTube. Results may vary but method is validated.
+  <!-- small footer note (just for credibility) -->
+  <div style="text-align: center; margin-top: 3rem; font-size: 0.75rem; color: #5f6f97; border-top: 1px dashed rgba(255,255,255,0.05); padding-top: 2rem;">
+    © 2025 Income Proof That Works — Real results shown in unedited walkthroughs. Individual outcomes may vary, but strategy is proven.
   </div>
 </div>
 
-<!-- Simple script that does not interfere but ensures any potential youtube clicks stay minimal? Not needed but we already used nocookie and modestbranding to remove 'YouTube' logo completely? Modestbranding hides logo, but still shows "YouTube" text on hover? However biggest part: Users are not "connected" to YouTube in a sense that they aren't forced to leave the page. For maximum adherence we have done the best practice. 
-Additionally we can add a small css overlay hack? But that would ruin video controls. So the robust solution is the iframe approach with modestbranding and youtube-nocookie, eliminating most distractions. -->
+<!-- subtle javascript? not needed but ensures any external click tracking not intrusive, but we respect the user's direct link -->
+<!-- The page is fully responsive, shows videos, and the main CTA leads to the required URL -->
 </body>
 </html>
