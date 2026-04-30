@@ -82,7 +82,7 @@
 
     /* VIDEO SECTION — stacked vertical layout, extra large */
     .video-stack {
-      margin: 2.5rem 0 3rem;
+      margin: 2.5rem 0 1.5rem;
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
@@ -125,12 +125,53 @@
       border: none;
     }
 
-    /* Remove all captions, stats, extra texts — clean */
-    .no-text {
-      display: none;
+    /* BUTTON directly under each video - clean but persuasive */
+    .video-btn-wrapper {
+      margin-top: 1.2rem;
+      padding: 0 0.25rem 0.2rem 0.25rem;
+      text-align: center;
     }
 
-    /* CTA area */
+    .video-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(105deg, #f5b042 0%, #ffcd7e 100%);
+      color: #0a0f1e;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 0.85rem 2.2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: all 0.2s ease;
+      box-shadow: 0 6px 14px rgba(245, 176, 66, 0.3);
+      border: none;
+      cursor: pointer;
+      width: auto;
+      min-width: 260px;
+      backdrop-filter: blur(2px);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .video-cta-btn:hover {
+      transform: scale(1.02);
+      background: linear-gradient(105deg, #f5b042, #ffdd99);
+      box-shadow: 0 10px 20px rgba(245, 176, 66, 0.5);
+      color: #000000;
+    }
+
+    .video-cta-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* optional small arrow / emoji inside button */
+    .video-cta-btn span {
+      font-size: 1.2rem;
+    }
+
+    /* CTA area (main bottom) */
     .cta-container {
       text-align: center;
       margin: 3rem 0 2rem;
@@ -152,7 +193,7 @@
       margin: 0 auto 2rem auto;
     }
 
-    .btn {
+    .btn-main {
       display: inline-block;
       background: linear-gradient(95deg, #f5b042 0%, #ffcd7e 100%);
       color: #0e0f1c;
@@ -168,14 +209,14 @@
       cursor: pointer;
     }
 
-    .btn:hover {
+    .btn-main:hover {
       transform: scale(1.03);
       background: linear-gradient(95deg, #f5b042, #ffdd99);
       box-shadow: 0 12px 24px rgba(245, 176, 66, 0.5);
       color: #0a0f1e;
     }
 
-    .btn:active {
+    .btn-main:active {
       transform: scale(0.99);
     }
 
@@ -222,7 +263,7 @@
       .cta-title {
         font-size: 1.7rem;
       }
-      .btn {
+      .btn-main {
         font-size: 1.1rem;
         padding: 0.85rem 2rem;
       }
@@ -232,9 +273,14 @@
       .video-stack {
         gap: 1.8rem;
       }
+      .video-cta-btn {
+        font-size: 1rem;
+        padding: 0.7rem 1.6rem;
+        min-width: 220px;
+      }
     }
 
-    /* remove any default youtube related overlays? cannot fully, but embedded play nice */
+    /* remove any extra youtube overlays? fine, but buttons visible */
     ::-webkit-scrollbar {
       width: 8px;
       background: #0a0f1a;
@@ -243,8 +289,6 @@
       background: #f5b042;
       border-radius: 10px;
     }
-
-    /* hide any extra potential "watch on youtube" badge? not needed, just standard iframe */
   </style>
 </head>
 <body>
@@ -261,39 +305,56 @@
     </p>
   </div>
 
-  <!-- VERTICAL VIDEO SECTION - Large, stacked, NO text under videos, removed section titles / subtitles -->
+  <!-- VERTICAL VIDEO SECTION - Large, stacked, EACH video gets a dedicated action button directly underneath -->
   <div class="video-stack">
-    <!-- Video 1 - exact embed, full width, no caption / no stats / no extra text -->
+    <!-- Video 1 - with button below (no captions/stats except CTA button) -->
     <div class="video-block">
       <div class="video-wrapper">
         <iframe src="https://www.youtube.com/embed/KPHXueSqC_Y?si=-nG04fJrwOPoOWhF&rel=0&modestbranding=1&showinfo=0&controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
-      <!-- absolutely no text below -->
+      <!-- ACTION BUTTON directly under video #1 -->
+      <div class="video-btn-wrapper">
+        <a href="https://www.twiceconfirmedtraffic.com/index.php?id=10214" class="video-cta-btn" target="_blank" rel="noopener noreferrer">
+          <span>⚡</span> GET THIS INCOME PROOF <span>➡️</span>
+        </a>
+      </div>
     </div>
 
-    <!-- Video 2 - vertical second, large, clean -->
+    <!-- Video 2 - with button directly underneath -->
     <div class="video-block">
       <div class="video-wrapper">
         <iframe src="https://www.youtube.com/embed/zCeKhROFW3g?si=WutFWWee48C79UTM&rel=0&modestbranding=1&showinfo=0&controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
+      <!-- BUTTON right under video #2 -->
+      <div class="video-btn-wrapper">
+        <a href="https://www.twiceconfirmedtraffic.com/index.php?id=10214" class="video-cta-btn" target="_blank" rel="noopener noreferrer">
+          <span>💸</span> CLAIM YOUR ACCESS NOW <span>🔥</span>
+        </a>
+      </div>
     </div>
 
-    <!-- Video 3 - vertical third, massive & clear -->
+    <!-- Video 3 - with button directly underneath, same persuasive link -->
     <div class="video-block">
       <div class="video-wrapper">
         <iframe src="https://www.youtube.com/embed/vK0Al-Xes48?si=UZ8w8I9X5uPLFXsF&rel=0&modestbranding=1&showinfo=0&controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
+      <!-- BUTTON after third video (keeps conversion momentum) -->
+      <div class="video-btn-wrapper">
+        <a href="https://www.twiceconfirmedtraffic.com/index.php?id=10214" class="video-cta-btn" target="_blank" rel="noopener noreferrer">
+          <span>🎯</span> UNLOCK THE SAME SYSTEM <span>✅</span>
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- Persuasive CTA Section with the provided link -->
+  <!-- Persuasive main CTA Section with the provided link -->
   <div class="cta-container">
     <div class="cta-title">💎 Ready to claim your income proof?</div>
     <div class="cta-desc">
       No gimmicks. The same system that created these results is now available.  
       <strong>Stop watching — start earning.</strong>
     </div>
-    <a href="https://www.twiceconfirmedtraffic.com/index.php?id=10214" class="btn" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.twiceconfirmedtraffic.com/index.php?id=10214" class="btn-main" target="_blank" rel="noopener noreferrer">
       🔥 ACCESS INCOME SYSTEM NOW 🔥
     </a>
     <div style="margin-top: 1.2rem; font-size: 0.8rem; opacity: 0.7;">
@@ -310,13 +371,13 @@
       <span class="trust-icon">🔒</span> SSL Secure checkout
     </div>
     <div class="trust-item">
-      <span class="trust-icon">🎬</span> Real video proofs above
+      <span class="trust-icon">🎬</span> Real video proofs + buttons below
     </div>
   </div>
 
   <!-- small footer note -->
   <div class="tiny-footer">
-    © 2025 Income Proof That Works — Real results shown in unedited walkthroughs. Individual outcomes may vary, but strategy is proven.
+    © 2025 Income Proof That Works — Real results shown in unedited walkthroughs. Individual outcomes may vary, but strategy is proven. Click any button to see how.
   </div>
 </div>
 
